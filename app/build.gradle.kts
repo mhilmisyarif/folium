@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import java.util.Properties
 
 plugins {
     id("com.android.application")
@@ -11,12 +12,30 @@ android {
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "dev.mangareader"
+        // Published ID (first release 0.1.0). The Kotlin namespace stays dev.mangareader.
+        applicationId = "io.github.mhilmisyarif.folium"
         minSdk = 23
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         targetSdk = 36
-        versionCode = 2
-        versionName = "0.2"
+        versionCode = 1
+        versionName = "0.1.0"
+    }
+    // Release signing from keystore.properties (not in git; back it up — every update must use the same key).
+    val keystoreProps = rootProject.file("keystore.properties").takeIf { it.exists() }?.let { f -> Properties().apply { f.inputStream().use(::load) } }
+    signingConfigs {
+        if (keystoreProps != null) create("release") {
+            storeFile = rootProject.file(keystoreProps.getProperty("storeFile"))
+            storePassword = keystoreProps.getProperty("storePassword")
+            keyAlias = keystoreProps.getProperty("keyAlias")
+            keyPassword = keystoreProps.getProperty("keyPassword")
+        }
+    }
+    buildTypes {
+        release {
+            // No R8: kotatsu-parsers finds parsers and models by reflection.
+            isMinifyEnabled = false
+            signingConfig = signingConfigs.findByName("release")
+        }
     }
     buildFeatures { viewBinding = true }
     compileOptions {

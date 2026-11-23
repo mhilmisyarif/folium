@@ -23,6 +23,16 @@ Sources are powered by **[kotatsu-parsers](https://github.com/KotatsuApp/kotatsu
 
 > Available in **English** (default) and **Bahasa Indonesia**. Change it in Settings → Language, or in Android 13+ system settings.
 
+## Download
+
+Get the latest APK from **[Releases](https://github.com/mhilmisyarif/folium/releases/latest)** (Android 6.0+). Folium is in early development (0.x), so expect rough edges.
+
+Release APKs are signed with this certificate (SHA-256), so you can check that a download is genuine:
+
+```
+14:41:25:CE:4D:A8:0B:11:2F:DF:C2:61:DC:0C:5F:FA:02:95:92:44:80:FE:A3:DF:02:84:57:41:D8:D7:B9:EE
+```
+
 ## Screenshots
 
 <table>

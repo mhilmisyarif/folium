@@ -188,6 +188,12 @@ Zoom (pinch/double-tap), kecerahan, warna latar, auto-next chapter di akhir webt
 Rencana awal Fase 5:
 Urutan: PDF (PdfRenderer, tanpa dependensi) → EPUB (WebView + CSS) → novel online (sumber `NOVEL`) → impor lokal + edit metadata. Kategori/menu format baru baru tampil di UI setelah engine-nya berfungsi.
 
+### Rilis 0.1.0 (2026-11-23)
+- `applicationId` jadi `io.github.mhilmisyarif.folium` (namespace Kotlin tetap `dev.mangareader`). Dianggap aplikasi baru: data instalasi `dev.mangareader` lama tidak ikut pindah (pindahkan lewat Backup/Restore).
+- `versionCode` 1, `versionName` 0.1.0; build rilis tanpa R8 (kotatsu-parsers memakai reflection).
+- Signing rilis dari `keystore.properties` + `keystore/folium-release.jks` (keduanya di-gitignore). Sertifikat SHA-256 `14:41:25:CE:…:D7:B9:EE`. **Semua update harus memakai kunci yang sama; backup kedua file itu.**
+- Diuji: APK rilis terverifikasi `apksigner` (v1+v2), dipasang bersih di emulator, bahasa bawaan Inggris, sumber dimuat, bab terbaca.
+
 ### Bahasa (2026-11-23)
 - Bahasa Inggris jadi bahasa bawaan (`values/`), Bahasa Indonesia di `values-in/` (308 string + 10 array). Semua teks yang tadinya hardcode di XML pengaturan dan di Kotlin dipindah ke resource. Pesan error internal (lapisan tanpa `Context`) memakai bahasa Inggris.
 - Pengaturan → Tampilan → Bahasa: English / Bahasa Indonesia / Ikuti sistem, lewat `AppCompatDelegate.setApplicationLocales` (`autoStoreLocales` untuk Android ≤12, `locales_config.xml` untuk pengaturan bahasa per-aplikasi Android 13+).
