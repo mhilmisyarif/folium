@@ -21,7 +21,7 @@ Folium brings manga, manhwa, manhua, web novels, PDFs, and EPUBs together in one
 
 Sources are powered by **[kotatsu-parsers](https://github.com/KotatsuApp/kotatsu-parsers)**, and the comic reading experience follows **[Kotatsu](https://github.com/KotatsuApp/Kotatsu)**. On top of that, Folium has a design of its own: calm, warm, and comfortable for long reading sessions.
 
-> The app's interface is currently in Indonesian.
+> Available in **English** (default) and **Bahasa Indonesia**. Change it in Settings → Language, or in Android 13+ system settings.
 
 ## Screenshots
 
@@ -102,6 +102,7 @@ Sources are powered by **[kotatsu-parsers](https://github.com/KotatsuApp/kotatsu
 ### More
 
 - **Scrobbling:** AniList, MyAnimeList, Kitsu, and Shikimori.
+- **Languages:** English (default) and Bahasa Indonesia, switchable in the app; on Android 13+ also from the system's per-app language settings.
 - **Themes:** light, dark, or follow the system, plus dynamic wallpaper colours (Android 12+).
 - **Design:** Playfair Display for headings, Inter for text, a forest-green, cream, and sage palette with contrast-checked colours, and Material Symbols icons.
 

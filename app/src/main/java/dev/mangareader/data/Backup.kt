@@ -51,7 +51,7 @@ fun BackupData.toJson(): String = JSONObject()
 fun parseBackup(json: String): BackupData {
     val root = JSONObject(json)
     val version = root.optInt("version", -1)
-    require(version in 1..BACKUP_VERSION) { "Versi backup tidak didukung: $version" }
+    require(version in 1..BACKUP_VERSION) { "Unsupported backup version: $version" }
     fun JSONObject.strOrNull(k: String) = if (isNull(k)) null else optString(k)
     fun objects(key: String) = root.optJSONArray(key)?.let { a -> (0 until a.length()).map { a.getJSONObject(it) } }.orEmpty()
     val domains = root.optJSONObject("domains")

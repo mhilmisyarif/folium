@@ -45,8 +45,8 @@ private const val NOTIFY_TRACKER = 2
 fun createNotificationChannels(context: Context) {
     if (Build.VERSION.SDK_INT < 26) return
     val nm = context.getSystemService(NotificationManager::class.java)
-    nm.createNotificationChannel(NotificationChannel(CHANNEL_DOWNLOADS, "Unduhan", NotificationManager.IMPORTANCE_LOW))
-    nm.createNotificationChannel(NotificationChannel(CHANNEL_TRACKER, "Chapter baru", NotificationManager.IMPORTANCE_DEFAULT))
+    nm.createNotificationChannel(NotificationChannel(CHANNEL_DOWNLOADS, context.getString(R.string.downloads), NotificationManager.IMPORTANCE_LOW))
+    nm.createNotificationChannel(NotificationChannel(CHANNEL_TRACKER, context.getString(R.string.channel_new_chapters), NotificationManager.IMPORTANCE_DEFAULT))
 }
 
 private fun Context.canNotify() =
@@ -80,7 +80,7 @@ class DownloadWorker(context: Context, params: WorkerParameters) : CoroutineWork
 
     private suspend fun download(task: DownloadEntity) {
         val app = applicationContext.app
-        val manga = requireNotNull(app.db.dao().manga(task.mangaId)) { "Manga tidak ada di database" }.toManga()
+        val manga = requireNotNull(app.db.dao().manga(task.mangaId)) { "Manga is not in the database" }.toManga()
         val parser = app.source(manga.source)
         val chapter = dev.mangareader.parser.MangaChapter(task.chapterUrl, task.chapterName)
         if (parser is dev.mangareader.parser.TextSource) {
@@ -101,7 +101,7 @@ class DownloadWorker(context: Context, params: WorkerParameters) : CoroutineWork
                     if (slowdown && i > 0) Thread.sleep(SLOWDOWN_MS)
                     val req = Request.Builder().url(url).header(HEADER_SOURCE, manga.source).build()
                     app.client.newCall(req).execute().use { rsp ->
-                        if (!rsp.isSuccessful) throw IOException("HTTP ${rsp.code} halaman ${i + 1}")
+                        if (!rsp.isSuccessful) throw IOException(applicationContext.getString(R.string.err_page_http, rsp.code, i + 1))
                         File(dir, LocalStorage.pageFileName(i, url)).outputStream().use { out -> rsp.body!!.byteStream().copyTo(out) }
                     }
                     setForegroundAsync(foreground(task.chapterName, i + 1, pages.size))

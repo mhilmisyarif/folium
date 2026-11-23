@@ -125,6 +125,10 @@ class SettingsFragment : PreferenceFragmentCompat() {
         setPreferencesFromResource(R.xml.preferences, rootKey)
         noIconIndent(preferenceScreen)
         findPreference<ListPreference>("theme")?.setOnPreferenceChangeListener { _, v -> app.applyTheme(v as String); true }
+        findPreference<ListPreference>("app_language")?.apply {
+            value = app.currentLanguage()
+            setOnPreferenceChangeListener { _, v -> app.setLanguage(v as String); true } // recreates the screens in the new language
+        }
         findPreference<SwitchPreferenceCompat>("tracker_enabled")?.setOnPreferenceChangeListener { _, v ->
             TrackerWorker.schedule(requireContext(), v as Boolean, app.settings.getString("tracker_interval", "6")!!.toLong()); true
         }
@@ -156,7 +160,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
         findPreference<Preference>(key)?.setOnPreferenceClickListener { action(); true }
 
     private fun confirm(action: () -> Unit) {
-        AlertDialog.Builder(requireContext()).setMessage("Lanjutkan? Tindakan ini tidak bisa dibatalkan.")
+        AlertDialog.Builder(requireContext()).setMessage(R.string.confirm_irreversible)
             .setPositiveButton(R.string.delete) { _, _ -> action() }.setNegativeButton(android.R.string.cancel, null).show()
     }
 

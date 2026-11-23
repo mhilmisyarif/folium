@@ -37,7 +37,7 @@ class EpubBook private constructor(
                 while (true) {
                     val entry = zip.nextEntry ?: break
                     val out = File(root, entry.name).canonicalFile
-                    if (!out.path.startsWith(root.path + File.separator)) throw IOException("Entri EPUB tidak valid: ${entry.name}")
+                    if (!out.path.startsWith(root.path + File.separator)) throw IOException("Invalid EPUB entry: ${entry.name}")
                     if (entry.isDirectory) { out.mkdirs(); continue }
                     out.parentFile?.mkdirs()
                     out.outputStream().use { o ->
@@ -46,7 +46,7 @@ class EpubBook private constructor(
                             val n = zip.read(buf)
                             if (n < 0) break
                             total += n
-                            if (total > maxBytes) throw IOException("EPUB terlalu besar")
+                            if (total > maxBytes) throw IOException("EPUB is too large")
                             o.write(buf, 0, n)
                         }
                     }
@@ -54,13 +54,13 @@ class EpubBook private constructor(
             }
             File(root, ".complete").writeText("1")
             dir.deleteRecursively()
-            if (!tmp.renameTo(dir)) throw IOException("Gagal menyimpan EPUB")
+            if (!tmp.renameTo(dir)) throw IOException("Could not save the EPUB")
         }
 
         fun open(dir: File): EpubBook {
             val container = parse(File(dir, "META-INF/container.xml"))
             val opfPath = container.byTag("rootfile").firstOrNull()?.getAttribute("full-path")
-                ?: throw IOException("EPUB tanpa rootfile")
+                ?: throw IOException("EPUB has no rootfile")
             val opfFile = File(dir, opfPath)
             val opfDir = opfPath.substringBeforeLast('/', "")
             fun resolve(href: String) = normalize(if (opfDir.isEmpty()) href else "$opfDir/$href")
@@ -80,8 +80,8 @@ class EpubBook private constructor(
                 if (ref.getAttribute("linear") == "no") return@mapNotNull null
                 manifest[ref.getAttribute("idref")]?.getAttribute("href")?.let(::resolve)
             }
-            if (spine.isEmpty()) throw IOException("EPUB tanpa isi (spine kosong)")
-            val chapters = spine.mapIndexed { i, href -> Chapter(href, titles[href] ?: "Bab ${i + 1}") }
+            if (spine.isEmpty()) throw IOException("EPUB has no content (empty spine)")
+            val chapters = spine.mapIndexed { i, href -> Chapter(href, titles[href] ?: "Chapter ${i + 1}") }
             return EpubBook(dir, title, author, cover, chapters)
         }
 

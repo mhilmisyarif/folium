@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Settings → Sumber manga, following Kotatsu pref_sources.xml (same keys). -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListPreference android:key="sources_sort_order" android:title="Urutkan" android:defaultValue="MANUAL"
+    <ListPreference android:key="sources_sort_order" android:title="@string/txt_urutkan" android:defaultValue="MANUAL"
         android:entries="@array/sources_sort_names" android:entryValues="@array/sources_sort_values" android:summary="%s" />
-    <SwitchPreferenceCompat android:key="sources_grid" android:title="Tampilkan dalam tampilan kisi" android:defaultValue="true" />
+    <SwitchPreferenceCompat android:key="sources_grid" android:title="@string/txt_tampilkan_dalam_tampilan_kisi" android:defaultValue="true" />
     <Preference android:key="remote_sources" android:title="@string/manage_sources" android:persistent="false" />
 
-    <PreferenceCategory android:title="Katalog">
-        <SwitchPreferenceCompat android:key="sources_enabled_all" android:title="Aktifkan semua sumber manga" android:defaultValue="false"
-            android:summary="Semua sumber manga yang tersedia akan ditampilkan di Jelajah dan pencarian" />
+    <PreferenceCategory android:title="@string/txt_katalog">
+        <SwitchPreferenceCompat android:key="sources_enabled_all" android:title="@string/txt_aktifkan_semua_sumber_manga" android:defaultValue="false"
+            android:summary="@string/txt_semua_sumber_manga_yang_tersedia" />
         <Preference android:key="sources_catalog" android:title="@string/source_catalog" android:persistent="false" />
-        <SwitchPreferenceCompat android:key="no_nsfw" android:title="Nonaktifkan NSFW" android:defaultValue="false"
-            android:summary="Sembunyikan sumber NSFW dari Jelajah, katalog, dan pencarian" />
-        <ListPreference android:key="incognito_nsfw" android:title="Mode penyamaran untuk manga NSFW" android:defaultValue="ASK"
+        <SwitchPreferenceCompat android:key="no_nsfw" android:title="@string/txt_nonaktifkan_nsfw" android:defaultValue="false"
+            android:summary="@string/txt_sembunyikan_sumber_nsfw_dari_jelajah" />
+        <ListPreference android:key="incognito_nsfw" android:title="@string/txt_mode_penyamaran_untuk_manga_nsfw" android:defaultValue="ASK"
             android:entries="@array/incognito_nsfw_names" android:entryValues="@array/incognito_nsfw_values" android:summary="%s" />
-        <SwitchPreferenceCompat android:key="tags_warnings" android:title="Tandai genre berbahaya" android:defaultValue="true"
-            android:summary="Tandai genre yang mungkin tidak pantas untuk sebagian besar pengguna" />
+        <SwitchPreferenceCompat android:key="tags_warnings" android:title="@string/txt_tandai_genre_berbahaya" android:defaultValue="true"
+            android:summary="@string/txt_tandai_genre_yang_mungkin_tidak" />
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="Jaringan">
-        <SwitchPreferenceCompat android:key="mirror_switching" android:title="Pilih mirror otomatis" android:defaultValue="false"
-            android:summary="Alihkan domain sumber secara otomatis saat terjadi kesalahan jika ada mirror lain" />
-        <SwitchPreferenceCompat android:key="handle_links" android:title="Tangani tautan" android:persistent="false"
-            android:summary="Buka tautan manga dari aplikasi lain (mis. browser) di Folium. Mungkin perlu diaktifkan juga di pengaturan sistem aplikasi (Buka secara default)" />
+    <PreferenceCategory android:title="@string/txt_jaringan">
+        <SwitchPreferenceCompat android:key="mirror_switching" android:title="@string/txt_pilih_mirror_otomatis" android:defaultValue="false"
+            android:summary="@string/txt_alihkan_domain_sumber_secara_otomatis" />
+        <SwitchPreferenceCompat android:key="handle_links" android:title="@string/txt_tangani_tautan" android:persistent="false"
+            android:summary="@string/txt_buka_tautan_manga_dari_aplikasi" />
     </PreferenceCategory>
 </PreferenceScreen>

@@ -188,6 +188,13 @@ Zoom (pinch/double-tap), kecerahan, warna latar, auto-next chapter di akhir webt
 Rencana awal Fase 5:
 Urutan: PDF (PdfRenderer, tanpa dependensi) → EPUB (WebView + CSS) → novel online (sumber `NOVEL`) → impor lokal + edit metadata. Kategori/menu format baru baru tampil di UI setelah engine-nya berfungsi.
 
+### Bahasa (2026-11-23)
+- Bahasa Inggris jadi bahasa bawaan (`values/`), Bahasa Indonesia di `values-in/` (308 string + 10 array). Semua teks yang tadinya hardcode di XML pengaturan dan di Kotlin dipindah ke resource. Pesan error internal (lapisan tanpa `Context`) memakai bahasa Inggris.
+- Pengaturan → Tampilan → Bahasa: English / Bahasa Indonesia / Ikuti sistem, lewat `AppCompatDelegate.setApplicationLocales` (`autoStoreLocales` untuk Android ≤12, `locales_config.xml` untuk pengaturan bahasa per-aplikasi Android 13+).
+- Saat pertama dibuka (termasuk update dari versi lama) aplikasi beralih ke Inggris, kecuali bahasa sudah dipilih. Dipanggil dari `MainActivity`, karena di Android 13+ AppCompat butuh activity.
+- Penanda bab berbayar WebNovel jadi 🔒 (netral bahasa); label lama "· Berbayar" yang tersimpan tetap dikenali.
+- Diuji di emulator: bawaan `[en]`, ganti ke Indonesia `[id]`, kembali ke Inggris; teks layar utama dan pengaturan dicek.
+
 ### Fase 6 — QA — **SELESAI (2026-11-23)**
 Rencana: tes migrasi DB, logika status default, pemetaan progres PDF/EPUB; build; uji manual terang/gelap; data lama tetap ada.
 

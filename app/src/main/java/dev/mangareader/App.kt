@@ -89,7 +89,7 @@ class App : Application(), SingletonImageLoader.Factory {
     }
     private val sourceById by lazy { sources.associateBy { it.id } }
 
-    fun source(id: String): MangaParser = sourceById[id] ?: error("Sumber tidak dikenal: $id")
+    fun source(id: String): MangaParser = sourceById[id] ?: error("Unknown source: $id")
     fun sourceOrNull(id: String): MangaParser? = sourceById[id]
 
     /** "Tangani tautan": the source that owns [url] (by its known domains) and the title behind it. */
@@ -145,7 +145,7 @@ class App : Application(), SingletonImageLoader.Factory {
         listOf(AniListScrobbler(client, prefs), MalScrobbler(client, prefs), KitsuScrobbler(client, prefs), ShikimoriScrobbler(client, prefs))
     }
 
-    val repository by lazy { MangaRepository(db.dao(), ::source, ::scrobble) }
+    val repository by lazy { MangaRepository(db.dao(), ::source, ::scrobble) { getString(R.string.default_collection) } }
 
     override fun onCreate() {
         super.onCreate()
@@ -154,6 +154,30 @@ class App : Application(), SingletonImageLoader.Factory {
         applyTheme(settings.getString("theme", "system"))
         createNotificationChannels(this)
         TrackerWorker.schedule(this, settings.getBoolean("tracker_enabled", true), settings.getString("tracker_interval", "6")!!.toLong())
+    }
+
+    /**
+     * English is the default language: on first start (or after updating from a version without a language setting) the
+     * app switches to English unless a language was already chosen, in the app or in Android's per-app settings.
+     * Called from the first activity: on Android 13+ AppCompat can only reach the system LocaleManager through one.
+     */
+    fun applyDefaultLanguage() {
+        if (settings.getBoolean(KEY_LANGUAGE_INIT, false)) return
+        if (AppCompatDelegate.getApplicationLocales().isEmpty) setLanguage(LANGUAGE_DEFAULT)
+        settings.edit().putBoolean(KEY_LANGUAGE_INIT, true).apply()
+    }
+
+    /** Settings → Language: "en", "id", or "system" (follow the device). */
+    fun setLanguage(tag: String) = AppCompatDelegate.setApplicationLocales(
+        if (tag == LANGUAGE_SYSTEM) androidx.core.os.LocaleListCompat.getEmptyLocaleList()
+        else androidx.core.os.LocaleListCompat.forLanguageTags(tag),
+    )
+
+    /** Current choice for the Settings list ("in" is Java's old code for Indonesian). */
+    fun currentLanguage(): String {
+        val locales = AppCompatDelegate.getApplicationLocales()
+        if (locales.isEmpty) return LANGUAGE_SYSTEM
+        return when (locales[0]?.language) { "in", "id" -> "id"; else -> "en" }
     }
 
     fun applyTheme(value: String?) = AppCompatDelegate.setDefaultNightMode(
@@ -187,6 +211,10 @@ class App : Application(), SingletonImageLoader.Factory {
 }
 
 val Context.app get() = applicationContext as App
+
+private const val KEY_LANGUAGE_INIT = "language_initialized"
+const val LANGUAGE_DEFAULT = "en"
+const val LANGUAGE_SYSTEM = "system"
 
 // Settings → Sumber manga (Kotatsu keys)
 const val KEY_SORT = "sources_sort_order"

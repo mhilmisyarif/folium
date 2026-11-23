@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Bahasa Indonesia: only the arrays with display names. -->
+<resources>
+    <string-array name="theme_names"><item>Ikuti sistem</item><item>Terang</item><item>Gelap</item></string-array>
+    <string-array name="interval_names"><item>Setiap 3 jam</item><item>Setiap 6 jam</item><item>Setiap 12 jam</item><item>Setiap hari</item></string-array>
+    <string-array name="zoom_mode_names"><item>Pas tengah</item><item>Pas tinggi</item><item>Pas lebar</item><item>Tetap di awal</item></string-array>
+    <string-array name="reader_animation_names"><item>Dinonaktifkan</item><item>Bawaan sistem</item><item>Lanjutan</item></string-array>
+    <string-array name="reader_orientation_names"><item>Bawaan sistem</item><item>Otomatis</item><item>Potret</item><item>Lanskap</item></string-array>
+    <string-array name="pages_preload_names"><item>Selalu</item><item>Hanya di Wi-Fi</item><item>Jangan pernah</item></string-array>
+    <string-array name="text_font_names"><item>Serif</item><item>Sans-serif</item></string-array>
+    <string-array name="pdf_mode_names"><item>Gulir</item><item>Halaman per halaman</item></string-array>
+    <string-array name="sources_sort_names"><item>Manual</item><item>Alfabetis</item><item>Terakhir digunakan</item></string-array>
+    <string-array name="incognito_nsfw_names"><item>Aktif</item><item>Selalu tanya</item><item>Nonaktif</item></string-array>
+</resources>

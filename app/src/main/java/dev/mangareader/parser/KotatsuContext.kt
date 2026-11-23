@@ -30,7 +30,7 @@ import android.graphics.Canvas as AndroidCanvas
 import android.graphics.Rect as AndroidRect
 
 /** Thrown when a site needs a browser (Cloudflare challenge, captcha); solve it in a WebView sharing cookies + UA. */
-class CloudflareException(val url: String) : IOException("Situs meminta verifikasi browser (Cloudflare): $url")
+class CloudflareException(val url: String) : IOException("The site requires a browser check (Cloudflare): $url")
 
 /** Kotatsu: core/parser/MangaLoaderContextImpl. */
 class KotatsuContext(
@@ -75,7 +75,7 @@ class KotatsuContext(
 
     /** Descrambles images for the few sources that shuffle tiles. */
     override fun redrawImageResponse(response: Response, redraw: (image: Bitmap) -> Bitmap): Response {
-        val decoded = response.body.byteStream().use { BitmapFactory.decodeStream(it) } ?: throw IOException("Gambar tidak bisa didekode")
+        val decoded = response.body.byteStream().use { BitmapFactory.decodeStream(it) } ?: throw IOException("Image could not be decoded")
         val source = BitmapWrapper(decoded.copy(AndroidBitmap.Config.ARGB_8888, true)).also { decoded.recycle() }
         val result = redraw(source) as BitmapWrapper
         val out = Buffer()

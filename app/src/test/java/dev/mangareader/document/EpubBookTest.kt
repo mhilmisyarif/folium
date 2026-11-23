@@ -76,7 +76,7 @@ class EpubBookTest {
         val book = EpubBook.open(dir)
         assertEquals("Old Book", book.title)
         assertEquals("OEBPS/cover.png", book.cover)
-        assertEquals(listOf("Prolog", "Bab 2"), book.chapters.map { it.title })
+        assertEquals(listOf("Prolog", "Chapter 2"), book.chapters.map { it.title })
     }
 
     @Test fun extract_rejectsZipSlip_andLeavesNothingBehind() {

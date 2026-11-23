@@ -28,9 +28,9 @@ class NovelDownloadTest {
     @Test fun paidChapters_areRecognisedFromTheCatalogLabel() {
         val html = javaClass.getResource("/fixtures/webnovel/catalog.html")!!.readText()
         val chapters = WebnovelParsing.catalog(html, Manga("/book/17013878605141805", "x", "", null, "WEBNOVEL"), "WEBNOVEL").chapters!!
-        val paid = MangaChapter("/book/1/2", "Chapter 9: Something · ${WebnovelParsing.PAID_LABEL}")
+        val paid = MangaChapter("/book/1/2", "Chapter 9: Something ${WebnovelParsing.PAID_LABEL}")
         // Same rule as WebnovelSource.isPaid (the class needs Android prefs, so the rule is checked on the label).
-        fun isPaid(c: MangaChapter) = c.name.endsWith(" · ${WebnovelParsing.PAID_LABEL}")
+        fun isPaid(c: MangaChapter) = c.name.endsWith(" ${WebnovelParsing.PAID_LABEL}")
         assertTrue(isPaid(paid))
         assertTrue(chapters.none(::isPaid)) // this book is free
     }

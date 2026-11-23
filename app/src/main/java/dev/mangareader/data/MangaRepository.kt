@@ -9,6 +9,8 @@ class MangaRepository(
     private val dao: MangaDao,
     private val sources: (String) -> MangaParser,
     private val onChapterRead: (Manga, MangaChapter) -> Unit,
+    /** Name for the first collection, in the app language when it is created. */
+    private val defaultCategoryName: () -> String = { "Main" },
 ) {
 
     /** Cached manga + chapters, for instant/offline display. */
@@ -54,7 +56,7 @@ class MangaRepository(
     }
 
     suspend fun defaultCategoryId(): Long =
-        dao.categories().firstOrNull()?.id ?: dao.insertCategory(CategoryEntity(title = "Utama"))
+        dao.categories().firstOrNull()?.id ?: dao.insertCategory(CategoryEntity(title = defaultCategoryName()))
 
     suspend fun setFavourite(manga: Manga, categoryIds: Collection<Long>) {
         dao.upsertManga(manga.copy(chapters = null).toEntity())

@@ -1,44 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Comic reader settings, following Kotatsu pref_reader.xml (same keys and labels). Each entry is read by ReaderActivity. -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:title="Mode">
-        <ListPreference android:key="reader_mode" android:title="Mode bawaan" android:defaultValue="WEBTOON"
+    <PreferenceCategory android:title="@string/txt_mode">
+        <ListPreference android:key="reader_mode" android:title="@string/txt_mode_bawaan" android:defaultValue="WEBTOON"
             android:entries="@array/reader_mode_names" android:entryValues="@array/reader_mode_values" android:summary="%s" />
-        <SwitchPreferenceCompat android:key="reader_mode_detect" android:title="Otomatis deteksi mode pembaca" android:defaultValue="true"
-            android:summary="Otomatis mendeteksi jika manga adalah webtoon. Mode yang dipilih di pembaca diingat per judul." />
-        <ListPreference android:key="zoom_mode" android:title="Mode skala" android:defaultValue="FIT_CENTER"
+        <SwitchPreferenceCompat android:key="reader_mode_detect" android:title="@string/txt_otomatis_deteksi_mode_pembaca" android:defaultValue="true"
+            android:summary="@string/txt_otomatis_mendeteksi_jika_manga_adalah" />
+        <ListPreference android:key="zoom_mode" android:title="@string/txt_mode_skala" android:defaultValue="FIT_CENTER"
             android:entries="@array/zoom_mode_names" android:entryValues="@array/zoom_mode_values" android:summary="%s" />
-        <SwitchPreferenceCompat android:key="webtoon_gaps" android:title="Celah dalam mode webtoon" android:defaultValue="false"
-            android:summary="Tampilkan jarak antar halaman dalam mode webtoon" />
+        <SwitchPreferenceCompat android:key="webtoon_gaps" android:title="@string/txt_celah_dalam_mode_webtoon" android:defaultValue="false"
+            android:summary="@string/txt_tampilkan_jarak_antar_halaman_dalam" />
     </PreferenceCategory>
-    <PreferenceCategory android:title="Kontrol">
-        <SwitchPreferenceCompat android:key="reader_taps_ltr" android:title="Kontrol pembaca ergonomis" android:defaultValue="false"
-            android:summary="Ketuk kanan selalu ke halaman berikutnya, juga dalam mode kanan-ke-kiri" />
-        <SwitchPreferenceCompat android:key="reader_volume_buttons" android:title="Aktifkan tombol volume" android:defaultValue="false"
-            android:summary="Gunakan tombol volume untuk berpindah halaman" />
-        <SwitchPreferenceCompat android:key="reader_navigation_inverted" android:title="Balik kontrol navigasi" android:defaultValue="false"
-            android:dependency="reader_volume_buttons" android:summary="Tukar arah tombol volume" />
-        <ListPreference android:key="reader_animation2" android:title="Animasi halaman" android:defaultValue="DEFAULT"
+    <PreferenceCategory android:title="@string/txt_kontrol">
+        <SwitchPreferenceCompat android:key="reader_taps_ltr" android:title="@string/txt_kontrol_pembaca_ergonomis" android:defaultValue="false"
+            android:summary="@string/txt_ketuk_kanan_selalu_ke_halaman" />
+        <SwitchPreferenceCompat android:key="reader_volume_buttons" android:title="@string/txt_aktifkan_tombol_volume" android:defaultValue="false"
+            android:summary="@string/txt_gunakan_tombol_volume_untuk_berpindah" />
+        <SwitchPreferenceCompat android:key="reader_navigation_inverted" android:title="@string/txt_balik_kontrol_navigasi" android:defaultValue="false"
+            android:dependency="reader_volume_buttons" android:summary="@string/txt_tukar_arah_tombol_volume" />
+        <ListPreference android:key="reader_animation2" android:title="@string/txt_animasi_halaman" android:defaultValue="DEFAULT"
             android:entries="@array/reader_animation_names" android:entryValues="@array/reader_animation_values" android:summary="%s" />
         <SwitchPreferenceCompat android:key="reader_auto_next" android:title="@string/auto_next" android:defaultValue="true" />
-        <SwitchPreferenceCompat android:key="reader_chapter_toast" android:title="Tampilkan popup perubahan bab" android:defaultValue="true"
-            android:summary="Tampilkan pesan pop-up dengan judul bab saat diubah" />
+        <SwitchPreferenceCompat android:key="reader_chapter_toast" android:title="@string/txt_tampilkan_popup_perubahan_bab" android:defaultValue="true"
+            android:summary="@string/txt_tampilkan_pesan_pop_up_dengan" />
     </PreferenceCategory>
-    <PreferenceCategory android:title="Tampilan">
-        <ListPreference android:key="reader_background" android:title="Latar belakang" android:defaultValue="BLACK"
+    <PreferenceCategory android:title="@string/txt_tampilan">
+        <ListPreference android:key="reader_background" android:title="@string/txt_latar_belakang" android:defaultValue="BLACK"
             android:entries="@array/reader_background_names" android:entryValues="@array/reader_background_values" android:summary="%s" />
-        <SwitchPreferenceCompat android:key="reader_fullscreen" android:title="Mode layar penuh" android:defaultValue="true"
-            android:summary="Sembunyikan bilah status dan navigasi saat membaca" />
-        <ListPreference android:key="reader_orientation" android:title="Orientasi layar" android:defaultValue="SYSTEM"
+        <SwitchPreferenceCompat android:key="reader_fullscreen" android:title="@string/txt_mode_layar_penuh" android:defaultValue="true"
+            android:summary="@string/txt_sembunyikan_bilah_status_dan_navigasi" />
+        <ListPreference android:key="reader_orientation" android:title="@string/txt_orientasi_layar" android:defaultValue="SYSTEM"
             android:entries="@array/reader_orientation_names" android:entryValues="@array/reader_orientation_values" android:summary="%s" />
-        <SwitchPreferenceCompat android:key="keep_screen_on" android:title="Biarkan layar menyala" android:defaultValue="true" />
-        <SwitchPreferenceCompat android:key="reader_bar" android:title="Tampilkan bilah informasi di pembaca" android:defaultValue="true"
-            android:summary="Nomor halaman di bawah layar" />
-        <SwitchPreferenceCompat android:key="reader_bar_transparent" android:title="Bilah informasi pembaca transparan" android:defaultValue="true"
+        <SwitchPreferenceCompat android:key="keep_screen_on" android:title="@string/txt_biarkan_layar_menyala" android:defaultValue="true" />
+        <SwitchPreferenceCompat android:key="reader_bar" android:title="@string/txt_tampilkan_bilah_informasi_di_pembaca" android:defaultValue="true"
+            android:summary="@string/txt_nomor_halaman_di_bawah_layar" />
+        <SwitchPreferenceCompat android:key="reader_bar_transparent" android:title="@string/txt_bilah_informasi_pembaca_transparan" android:defaultValue="true"
             android:dependency="reader_bar" />
     </PreferenceCategory>
-    <PreferenceCategory android:title="Jaringan">
-        <ListPreference android:key="pages_preload" android:title="Muat halaman lebih awal" android:defaultValue="ALWAYS"
+    <PreferenceCategory android:title="@string/txt_jaringan">
+        <ListPreference android:key="pages_preload" android:title="@string/txt_muat_halaman_lebih_awal" android:defaultValue="ALWAYS"
             android:entries="@array/pages_preload_names" android:entryValues="@array/pages_preload_values" android:summary="%s" />
     </PreferenceCategory>
 </PreferenceScreen>

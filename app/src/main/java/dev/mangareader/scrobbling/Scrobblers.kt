@@ -25,7 +25,7 @@ class AniListScrobbler(client: OkHttpClient, prefs: SharedPreferences) : Scrobbl
     override suspend fun handleRedirect(uri: Uri) {
         // Implicit grant returns the token in the fragment: #access_token=…&token_type=Bearer&expires_in=…
         val token = Uri.parse("?" + uri.encodedFragment.orEmpty()).getQueryParameter("access_token")
-        accessToken = requireNotNull(token) { "AniList tidak mengirim token" }
+        accessToken = requireNotNull(token) { "AniList did not return a token" }
     }
 
     private suspend fun graphql(query: String, variables: JSONObject): JSONObject {
@@ -78,7 +78,7 @@ class MalScrobbler(client: OkHttpClient, prefs: SharedPreferences) : Scrobbler(c
     }
 
     override suspend fun handleRedirect(uri: Uri) {
-        val code = requireNotNull(uri.getQueryParameter("code")) { "MAL tidak mengirim kode" }
+        val code = requireNotNull(uri.getQueryParameter("code")) { "MyAnimeList did not return a code" }
         val form = FormBody.Builder()
             .add("client_id", credential("client_id"))
             .add("grant_type", "authorization_code")
@@ -144,7 +144,7 @@ class KitsuScrobbler(client: OkHttpClient, prefs: SharedPreferences) : Scrobbler
     }
 
     override suspend fun updateProgress(targetId: String, chapter: Int) {
-        val userId = requireNotNull(prefs.getString("$id.user", null)) { "Login Kitsu dulu" }
+        val userId = requireNotNull(prefs.getString("$id.user", null)) { "Sign in to Kitsu first" }
         val find = "$api/library-entries".toHttpUrl().newBuilder()
             .addQueryParameter("filter[userId]", userId).addQueryParameter("filter[mangaId]", targetId).build().toString()
         val existing = JSONObject(call(authed(find).build())).getJSONArray("data").optJSONObject(0)
@@ -181,7 +181,7 @@ class ShikimoriScrobbler(client: OkHttpClient, prefs: SharedPreferences) : Scrob
         .addQueryParameter("scope", "user_rates").build().toString()
 
     override suspend fun handleRedirect(uri: Uri) {
-        val code = requireNotNull(uri.getQueryParameter("code")) { "Shikimori tidak mengirim kode" }
+        val code = requireNotNull(uri.getQueryParameter("code")) { "Shikimori did not return a code" }
         val form = FormBody.Builder()
             .add("grant_type", "authorization_code").add("client_id", credential("client_id"))
             .add("client_secret", credential("client_secret")).add("code", code).add("redirect_uri", redirectUri)
@@ -203,7 +203,7 @@ class ShikimoriScrobbler(client: OkHttpClient, prefs: SharedPreferences) : Scrob
     }
 
     override suspend fun updateProgress(targetId: String, chapter: Int) {
-        val userId = requireNotNull(prefs.getString("$id.user", null)) { "Login Shikimori dulu" }
+        val userId = requireNotNull(prefs.getString("$id.user", null)) { "Sign in to Shikimori first" }
         val find = "$base/api/v2/user_rates".toHttpUrl().newBuilder().addQueryParameter("user_id", userId)
             .addQueryParameter("target_id", targetId).addQueryParameter("target_type", "Manga").build().toString()
         val existing = JSONArray(call(sauthed(find).build())).optJSONObject(0)

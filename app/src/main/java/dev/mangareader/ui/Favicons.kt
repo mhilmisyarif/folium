@@ -45,7 +45,7 @@ class FaviconFetcher(
             var icons = source.parser.getFavicons()
             var lastError: IOException? = null
             while (!file.exists()) {
-                val icon = icons.find(SIZE_PX) ?: throw lastError ?: IOException("Tidak ada favicon")
+                val icon = icons.find(SIZE_PX) ?: throw lastError ?: IOException("No favicon")
                 try {
                     download(icon.url, file)
                 } catch (e: IOException) {
@@ -64,7 +64,7 @@ class FaviconFetcher(
             dir.mkdirs()
             val tmp = File(dir, "${source.id}.tmp")
             tmp.outputStream().use { rsp.body.byteStream().copyTo(it) }
-            if (!tmp.renameTo(file)) throw IOException("Gagal menyimpan favicon")
+            if (!tmp.renameTo(file)) throw IOException("Could not save the favicon")
         }
     }
 

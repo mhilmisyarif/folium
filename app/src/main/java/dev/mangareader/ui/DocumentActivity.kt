@@ -216,7 +216,7 @@ class DocumentActivity : AppCompatActivity() {
 
     private suspend fun openPdf(startPage: Int) {
         withContext(renderDispatcher) {
-            val fd = requireNotNull(contentResolver.openFileDescriptor(Uri.parse(manga.url), "r")) { "File tidak bisa dibuka" }
+            val fd = requireNotNull(contentResolver.openFileDescriptor(Uri.parse(manga.url), "r")) { getString(R.string.err_file_open) }
             pfd = fd
             val renderer = PdfRenderer(fd)
             pdf = renderer
@@ -314,7 +314,7 @@ class DocumentActivity : AppCompatActivity() {
         val dir = LocalDocuments.bookDir(this, manga.url)
         book = withContext(Dispatchers.IO) {
             if (!File(dir, ".complete").exists()) {
-                requireNotNull(contentResolver.openInputStream(Uri.parse(manga.url))) { "File tidak bisa dibuka" }.use { EpubBook.extract(it, dir) }
+                requireNotNull(contentResolver.openInputStream(Uri.parse(manga.url))) { getString(R.string.err_file_open) }.use { EpubBook.extract(it, dir) }
             }
             EpubBook.open(dir)
         }

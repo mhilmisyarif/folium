@@ -55,12 +55,12 @@ object LocalDocuments {
         runCatching { resolver.takePersistableUriPermission(uri, Intent.FLAG_GRANT_READ_URI_PERMISSION) }
         val name = resolver.query(uri, arrayOf(OpenableColumns.DISPLAY_NAME), null, null, null)?.use { c ->
             if (c.moveToFirst()) c.getString(0) else null
-        } ?: uri.lastPathSegment ?: "Dokumen"
+        } ?: uri.lastPathSegment ?: context.getString(dev.mangareader.R.string.document)
         val mime = resolver.getType(uri).orEmpty()
         val format = when {
             mime == "application/pdf" || name.endsWith(".pdf", true) -> DocFormat.PDF
             mime == "application/epub+zip" || name.endsWith(".epub", true) -> DocFormat.EPUB
-            else -> throw IOException("Format belum didukung. Pilih file PDF atau EPUB.")
+            else -> throw IOException(context.getString(dev.mangareader.R.string.err_unsupported_format))
         }
         val key = uri.toString()
         var title = name.substringBeforeLast('.')
@@ -70,7 +70,7 @@ object LocalDocuments {
             DocFormat.PDF -> renderPdfCover(context, uri, cover)
             DocFormat.EPUB -> {
                 val dir = bookDir(context, key)
-                requireNotNull(resolver.openInputStream(uri)) { "File tidak bisa dibuka" }.use { EpubBook.extract(it, dir) }
+                requireNotNull(resolver.openInputStream(uri)) { context.getString(dev.mangareader.R.string.err_file_open) }.use { EpubBook.extract(it, dir) }
                 val book = EpubBook.open(dir)
                 book.title?.let { title = it }
                 author = book.author
@@ -104,9 +104,9 @@ object LocalDocuments {
     }
 
     private fun renderPdfCover(context: Context, uri: Uri, out: File) {
-        val fd = context.contentResolver.openFileDescriptor(uri, "r") ?: throw IOException("File tidak bisa dibuka")
+        val fd = context.contentResolver.openFileDescriptor(uri, "r") ?: throw IOException(context.getString(dev.mangareader.R.string.err_file_open))
         PdfRenderer(fd).use { pdf ->
-            if (pdf.pageCount == 0) throw IOException("PDF kosong")
+            if (pdf.pageCount == 0) throw IOException(context.getString(dev.mangareader.R.string.err_pdf_empty))
             pdf.openPage(0).use { page ->
                 val w = 360
                 val bmp = Bitmap.createBitmap(w, (w.toFloat() * page.height / page.width).toInt().coerceAtLeast(1), Bitmap.Config.ARGB_8888)

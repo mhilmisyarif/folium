@@ -49,7 +49,7 @@ fun Context.contentTypeName(type: String): String = when (type) {
     "MANHWA" -> "Manhwa"
     "MANHUA" -> "Manhua"
     "HENTAI" -> "Hentai"
-    "COMICS" -> "Komik"
+    "COMICS" -> getString(R.string.type_comics)
     "ONE_SHOT" -> "One shot"
     "DOUJINSHI" -> "Doujinshi"
     "IMAGE_SET" -> "Image set"

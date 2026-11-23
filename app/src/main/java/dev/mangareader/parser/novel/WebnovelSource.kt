@@ -59,10 +59,11 @@ class WebnovelSource(
     override suspend fun getChapterText(chapter: MangaChapter): ChapterText =
         WebnovelParsing.chapter(get(chapter.url), "https://www.webnovel.com" + chapter.url)
 
-    override suspend fun getPages(chapter: MangaChapter): List<String> = throw UnsupportedOperationException("Sumber teks")
+    override suspend fun getPages(chapter: MangaChapter): List<String> = throw UnsupportedOperationException("Text source")
 
     /** The catalog labels paid chapters (see [WebnovelParsing.catalog]). */
-    override fun isPaid(chapter: MangaChapter) = chapter.name.endsWith(" · ${WebnovelParsing.PAID_LABEL}")
+    override fun isPaid(chapter: MangaChapter) =
+        chapter.name.endsWith(" ${WebnovelParsing.PAID_LABEL}") || chapter.name.endsWith(" · ${WebnovelParsing.LEGACY_PAID_LABEL}")
 
     override suspend fun getRelated(manga: Manga): List<Manga> = emptyList()
 
@@ -72,7 +73,7 @@ class WebnovelSource(
 
     private suspend fun fetch(url: String): String = runInterruptible(Dispatchers.IO) {
         client.newCall(Request.Builder().url(url).build()).execute().use { rsp ->
-            if (!rsp.isSuccessful) throw IOException("HTTP ${rsp.code} untuk $url")
+            if (!rsp.isSuccessful) throw IOException("HTTP ${rsp.code} for $url")
             rsp.body.string()
         }
     }
@@ -88,7 +89,7 @@ class WebnovelSource(
 internal object WebnovelParsing {
 
     fun nextData(html: String): JSONObject {
-        val json = Jsoup.parse(html).getElementById("__NEXT_DATA__")?.data() ?: throw IOException("Format halaman WebNovel berubah")
+        val json = Jsoup.parse(html).getElementById("__NEXT_DATA__")?.data() ?: throw IOException("The WebNovel page format has changed")
         return JSONObject(json).getJSONObject("props").getJSONObject("initialState").getJSONObject("entities")
     }
 
@@ -140,7 +141,7 @@ internal object WebnovelParsing {
     fun catalog(html: String, manga: Manga, source: String): Manga {
         val e = nextData(html)
         val bookId = WebnovelSource.bookId(manga.url)
-        val book = e.getJSONObject("books").optJSONObject(bookId) ?: throw IOException("Buku tidak ditemukan")
+        val book = e.getJSONObject("books").optJSONObject(bookId) ?: throw IOException("Book not found")
         val chapters = e.getJSONObject("chapter")
         val volumes = e.getJSONObject("volume")
         val order = e.getJSONObject("catalog").getJSONObject(bookId).getJSONArray("volumeItems")
@@ -153,7 +154,7 @@ internal object WebnovelParsing {
                 val title = c.optString("chapterName").ifBlank { "Chapter $index" }
                 val label = if (index > 0) "Chapter $index: $title" else title
                 val paid = c.optInt("isVip") > 0 && c.optInt("isAuth") == 0
-                list += MangaChapter("/book/$bookId/${c.getString("chapterId")}", if (paid) "$label · $PAID_LABEL" else label)
+                list += MangaChapter("/book/$bookId/${c.getString("chapterId")}", if (paid) "$label $PAID_LABEL" else label)
             }
         }
         val details = book.toManga(source)
@@ -178,5 +179,8 @@ internal object WebnovelParsing {
         return ChapterText(c.optString("chapterName"), paragraphs, locked, webUrl)
     }
 
-    const val PAID_LABEL = "Berbayar"
+    /** Marks paid chapters in their name (shown as-is in every language). */
+    const val PAID_LABEL = "🔒"
+    /** Label used before the app was translated; still in stored chapter lists. */
+    const val LEGACY_PAID_LABEL = "Berbayar"
 }

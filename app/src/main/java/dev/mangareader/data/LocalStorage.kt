@@ -46,12 +46,12 @@ class LocalStorage(private val root: File) {
         val dir = chapterDir(mangaId, chapterUrl)
         val tmp = File(dir.parentFile, dir.name + ".tmp")
         tmp.deleteRecursively()
-        check(tmp.mkdirs()) { "Tidak bisa membuat folder $tmp" }
+        check(tmp.mkdirs()) { "Cannot create folder $tmp" }
         try {
             write(tmp)
             File(tmp, MARKER).createNewFile()
             dir.deleteRecursively()
-            check(tmp.renameTo(dir)) { "Gagal memindahkan $tmp" }
+            check(tmp.renameTo(dir)) { "Cannot move $tmp" }
         } catch (e: Throwable) {
             tmp.deleteRecursively()
             throw e

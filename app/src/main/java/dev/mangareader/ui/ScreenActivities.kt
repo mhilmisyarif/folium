@@ -216,7 +216,7 @@ class BookmarksActivity : ListActivity() {
             // A bookmark is shown as a pseudo-manga card whose cover is the bookmarked page.
             adapter.submitList(list.map {
                 val b = it.bookmark
-                MangaItem(Manga(key(it), "${it.title}\n${b.chapterName} · hal. ${b.page + 1}", b.imageUrl, null, it.source))
+                MangaItem(Manga(key(it), "${it.title}\n" + getString(R.string.bookmark_position, b.chapterName, b.page + 1), b.imageUrl, null, it.source))
             })
             showEmpty(list.isEmpty())
         }

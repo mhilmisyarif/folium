@@ -126,6 +126,7 @@ fun Context.errorMessage(e: Throwable): String = when (e) {
     is javax.net.ssl.SSLException -> getString(R.string.err_ssl)
     is org.koitharu.kotatsu.parsers.exception.NotFoundException -> e.message ?: getString(R.string.err_offline)
     is org.jsoup.HttpStatusException -> getString(R.string.err_http, e.statusCode)
+    is dev.mangareader.parser.CloudflareException -> getString(R.string.err_cloudflare)
     else -> e.message ?: e.toString()
 }
 
