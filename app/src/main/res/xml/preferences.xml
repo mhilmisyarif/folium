@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Grouped as in Folium spec §4.5; every entry is a working setting (no placeholders). -->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="Tampilan">
+        <ListPreference android:key="theme" android:title="Tema" android:defaultValue="system"
+            android:entries="@array/theme_names" android:entryValues="@array/theme_values" android:summary="%s" />
+        <SwitchPreferenceCompat android:key="dynamic_color" android:defaultValue="false"
+            android:title="@string/dynamic_color" android:summary="@string/dynamic_color_summary" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Membaca">
+        <Preference android:key="reader_comic_settings" android:title="@string/reader_comic_settings"
+            android:summary="Mode baca, skala, kontrol, layar penuh, latar belakang" />
+        <Preference android:key="reader_text_settings" android:title="@string/reader_text_settings"
+            android:summary="Font, ukuran teks, spasi, margin, latar belakang, PDF" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Library">
+        <Preference android:key="sources" android:title="@string/manga_sources" android:summary="Urutan, kelola, katalog, NSFW, mirror, tautan" />
+        <SwitchPreferenceCompat android:key="tracker_enabled" android:title="Cek chapter baru otomatis"
+            android:summary="Untuk favorit di koleksi yang dipantau" android:defaultValue="true" />
+        <ListPreference android:key="tracker_interval" android:title="Interval cek" android:defaultValue="6"
+            android:dependency="tracker_enabled" android:entries="@array/interval_names" android:entryValues="@array/interval_values" android:summary="%s" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Penyimpanan">
+        <Preference android:key="clear_cache" android:title="Bersihkan cache gambar" />
+        <Preference android:key="clear_downloads" android:title="Hapus semua unduhan" />
+        <Preference android:key="clear_stats" android:title="Hapus statistik" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Sinkronisasi">
+        <Preference android:key="backup" android:title="Buat backup" android:summary="Favorit, koleksi, riwayat, bookmark, domain" />
+        <Preference android:key="restore" android:title="Pulihkan backup" />
+        <Preference android:key="tracking" android:title="@string/tracking" android:summary="AniList, MyAnimeList, Kitsu, Shikimori" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/app_name">
+        <Preference android:key="about" android:title="@string/about" android:icon="@drawable/ic_folium_logo" />
+    </PreferenceCategory>
+</PreferenceScreen>

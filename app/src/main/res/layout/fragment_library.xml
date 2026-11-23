@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Library (spec §4.2): one list of everything favourited, read or given a status; chips for view/collection and filters. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal"
+        android:baselineAligned="false" android:paddingHorizontal="@dimen/space_4" android:paddingTop="@dimen/space_1">
+        <LinearLayout android:id="@+id/downloads" style="@style/Widget.App.Tile" android:layout_marginEnd="@dimen/space_1">
+            <ImageView style="@style/Widget.App.Tile.Icon" android:importantForAccessibility="no" android:src="@drawable/ic_download" />
+            <TextView style="@style/Widget.App.Tile.Label" android:text="@string/downloads" />
+        </LinearLayout>
+        <LinearLayout android:id="@+id/bookmarks" style="@style/Widget.App.Tile" android:layout_marginHorizontal="@dimen/space_1">
+            <ImageView style="@style/Widget.App.Tile.Icon" android:importantForAccessibility="no" android:src="@drawable/ic_bookmark" />
+            <TextView style="@style/Widget.App.Tile.Label" android:text="@string/bookmarks" />
+        </LinearLayout>
+        <LinearLayout android:id="@+id/stats" style="@style/Widget.App.Tile" android:layout_marginStart="@dimen/space_1">
+            <ImageView style="@style/Widget.App.Tile.Icon" android:importantForAccessibility="no" android:src="@drawable/ic_stats" />
+            <TextView style="@style/Widget.App.Tile.Label" android:text="@string/stats" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/space_4" android:layout_marginTop="@dimen/space_3" app:startIconDrawable="@drawable/ic_search"
+        app:endIconMode="clear_text">
+        <com.google.android.material.textfield.TextInputEditText android:id="@+id/search" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:hint="@string/search_library" android:imeOptions="actionSearch"
+            android:inputType="text" android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <HorizontalScrollView android:layout_width="match_parent" android:layout_height="wrap_content" android:scrollbars="none"
+        android:clipToPadding="false" android:paddingHorizontal="@dimen/space_4" android:layout_marginTop="@dimen/space_2">
+        <com.google.android.material.chip.ChipGroup android:id="@+id/views" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" app:singleLine="true" app:singleSelection="true" app:selectionRequired="true" />
+    </HorizontalScrollView>
+    <HorizontalScrollView android:layout_width="match_parent" android:layout_height="wrap_content" android:scrollbars="none"
+        android:clipToPadding="false" android:paddingHorizontal="@dimen/space_4">
+        <com.google.android.material.chip.ChipGroup android:id="@+id/filters" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" app:singleLine="true" />
+    </HorizontalScrollView>
+
+    <FrameLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
+        <androidx.recyclerview.widget.RecyclerView android:id="@+id/list" android:clipToPadding="false"
+            android:layout_width="match_parent" android:layout_height="match_parent" android:padding="@dimen/space_1" />
+        <TextView android:id="@+id/empty" style="@style/Widget.App.EmptyState" android:visibility="gone"
+            android:text="@string/library_empty" />
+    </FrameLayout>
+</LinearLayout>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Keeps white text >= 4.5:1 over any cover art. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <gradient android:angle="90" android:startColor="@color/image_scrim_strong" android:centerColor="@color/image_scrim_mid" android:endColor="@color/image_scrim_weak" />
+</shape>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="theme_names"><item>Ikuti sistem</item><item>Terang</item><item>Gelap</item></string-array>
+    <string-array name="theme_values"><item>system</item><item>light</item><item>dark</item></string-array>
+    <string-array name="reader_mode_names">
+        <item>@string/mode_webtoon</item><item>@string/mode_paged_ltr</item><item>@string/mode_paged_rtl</item><item>@string/mode_paged_vertical</item>
+    </string-array>
+    <string-array name="reader_mode_values"><item>WEBTOON</item><item>PAGED_LTR</item><item>PAGED_RTL</item><item>PAGED_VERTICAL</item></string-array>
+    <string-array name="interval_names"><item>Setiap 3 jam</item><item>Setiap 6 jam</item><item>Setiap 12 jam</item><item>Setiap hari</item></string-array>
+    <string-array name="interval_values"><item>3</item><item>6</item><item>12</item><item>24</item></string-array>
+    <string-array name="reader_background_names"><item>@string/bg_black</item><item>@string/bg_gray</item><item>@string/bg_paper</item><item>@string/bg_white</item></string-array>
+    <string-array name="reader_background_values"><item>BLACK</item><item>GRAY</item><item>PAPER</item><item>WHITE</item></string-array>
+    <string-array name="zoom_mode_names"><item>Pas tengah</item><item>Pas tinggi</item><item>Pas lebar</item><item>Tetap di awal</item></string-array>
+    <string-array name="zoom_mode_values"><item>FIT_CENTER</item><item>FIT_HEIGHT</item><item>FIT_WIDTH</item><item>KEEP_START</item></string-array>
+    <string-array name="reader_animation_names"><item>Dinonaktifkan</item><item>Bawaan sistem</item><item>Lanjutan</item></string-array>
+    <string-array name="reader_animation_values"><item>NONE</item><item>DEFAULT</item><item>ADVANCED</item></string-array>
+    <string-array name="reader_orientation_names"><item>Bawaan sistem</item><item>Otomatis</item><item>Potret</item><item>Lanskap</item></string-array>
+    <string-array name="reader_orientation_values"><item>SYSTEM</item><item>AUTO</item><item>PORTRAIT</item><item>LANDSCAPE</item></string-array>
+    <string-array name="pages_preload_names"><item>Selalu</item><item>Hanya di Wi-Fi</item><item>Jangan pernah</item></string-array>
+    <string-array name="pages_preload_values"><item>ALWAYS</item><item>WIFI</item><item>NEVER</item></string-array>
+    <string-array name="text_font_names"><item>Serif</item><item>Sans-serif</item></string-array>
+    <string-array name="text_font_values"><item>SERIF</item><item>SANS</item></string-array>
+    <string-array name="pdf_mode_names"><item>Gulir</item><item>Halaman per halaman</item></string-array>
+    <string-array name="pdf_mode_values"><item>SCROLL</item><item>PAGE</item></string-array>
+    <string-array name="sources_sort_names"><item>Manual</item><item>Alfabetis</item><item>Terakhir digunakan</item></string-array>
+    <string-array name="sources_sort_values"><item>MANUAL</item><item>ALPHABETIC</item><item>LAST_USED</item></string-array>
+    <string-array name="incognito_nsfw_names"><item>Aktif</item><item>Selalu tanya</item><item>Nonaktif</item></string-array>
+    <string-array name="incognito_nsfw_values"><item>ENABLE</item><item>ASK</item><item>DISABLE</item></string-array>
+</resources>

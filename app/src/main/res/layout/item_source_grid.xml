@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Source tile for Explore in grid view (Settings → Sumber manga → Tampilkan dalam tampilan kisi; Kotatsu sources_grid). -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical"
+    android:gravity="center_horizontal" android:paddingHorizontal="@dimen/space_1" android:paddingVertical="@dimen/space_3"
+    android:background="?attr/selectableItemBackground">
+    <com.google.android.material.imageview.ShapeableImageView android:id="@+id/icon"
+        android:layout_width="56dp" android:layout_height="56dp" android:scaleType="fitCenter"
+        android:background="?attr/colorSurfaceVariant" android:importantForAccessibility="no"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.App.Icon" />
+    <TextView android:id="@+id/title" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_2" android:gravity="center" android:maxLines="2" android:ellipsize="end"
+        android:textAppearance="?attr/textAppearanceLabelLarge" />
+</LinearLayout>

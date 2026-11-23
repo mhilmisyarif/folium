@@ -1,0 +1,22 @@
+# Gradle / Kotlin build output
+.gradle/
+.kotlin/
+build/
+app/build/
+
+# Machine-specific
+local.properties
+.idea/
+*.iml
+.DS_Store
+captures/
+
+# Signing material and secrets
+*.jks
+*.keystore
+keystore.properties
+.env
+
+# Binaries (e.g. third-party APKs used for reference)
+*.apk
+*.aab

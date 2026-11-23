@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- End of chapter (webtoon footer / last pager page): what comes next, and a button for it (spec §5.1 auto next). -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical"
+    android:gravity="center" android:minHeight="280dp" android:padding="@dimen/space_8">
+    <TextView android:id="@+id/end_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:gravity="center"
+        android:textColor="@color/on_image" android:textAppearance="?attr/textAppearanceTitleLarge" />
+    <TextView android:id="@+id/end_next" android:layout_width="wrap_content" android:layout_height="wrap_content" android:gravity="center"
+        android:layout_marginTop="@dimen/space_2" android:textColor="@color/on_image_variant" android:textAppearance="?attr/textAppearanceBodyMedium" />
+    <com.google.android.material.button.MaterialButton android:id="@+id/end_button" style="@style/Widget.Material3.Button.Icon"
+        android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/space_5"
+        android:text="@string/next_chapter" app:icon="@drawable/ic_next" />
+</LinearLayout>

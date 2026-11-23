@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Folium dark theme (spec §3.1): forest-night surfaces, sage primary, sakura accent. All text pairs >= 4.5:1. -->
+<resources>
+    <color name="md_primary">#A8B5A0</color>
+    <color name="md_on_primary">#191C19</color>
+    <color name="md_primary_container">#263D32</color>
+    <color name="md_on_primary_container">#DCE5D9</color>
+    <color name="md_secondary">#82947E</color>
+    <color name="md_on_secondary">#191C19</color>
+    <color name="md_secondary_container">#3B4A3A</color>
+    <color name="md_on_secondary_container">#DCE5D9</color>
+    <color name="md_tertiary">#DDA5A0</color>
+    <color name="md_on_tertiary">#292522</color>
+    <color name="md_tertiary_container">#5A3B38</color>
+    <color name="md_on_tertiary_container">#F5DDDA</color>
+    <color name="md_background">#191C19</color>
+    <color name="md_on_background">#F5EBDD</color>
+    <color name="md_surface">#191C19</color>
+    <color name="md_on_surface">#F5EBDD</color>
+    <color name="md_surface_variant">#2D342D</color>
+    <color name="md_on_surface_variant">#B9B4A9</color>
+    <color name="md_surface_container_lowest">#141714</color>
+    <color name="md_surface_container_low">#1F241F</color>
+    <color name="md_surface_container">#232923</color>
+    <color name="md_surface_container_high">#2D342D</color>
+    <color name="md_surface_container_highest">#353D35</color>
+    <color name="md_outline">#8C877D</color>
+    <color name="md_outline_variant">#3B433B</color>
+    <color name="md_error">#F2B8B5</color>
+    <color name="md_on_error">#601410</color>
+    <color name="md_inverse_surface">#F5EBDD</color>
+    <color name="md_inverse_on_surface">#292522</color>
+    <color name="md_inverse_primary">#263D32</color>
+    <color name="scrim_start">#00191C19</color>
+</resources>

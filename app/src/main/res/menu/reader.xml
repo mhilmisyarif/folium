@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/action_bookmark" android:title="@string/bookmarks" android:icon="@drawable/ic_bookmark" app:showAsAction="ifRoom" />
+    <item android:id="@+id/action_settings" android:title="@string/reader_settings" android:icon="@drawable/ic_tune" app:showAsAction="ifRoom" />
+</menu>

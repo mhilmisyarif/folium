@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Cover card: 2:3 rounded cover (no card chrome), title below; shrinks slightly while pressed. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical"
+    android:padding="@dimen/space_1" android:background="?attr/selectableItemBackgroundBorderless"
+    android:stateListAnimator="@animator/press_scale">
+    <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+        <dev.mangareader.ui.CoverImageView android:id="@+id/cover" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:scaleType="centerCrop" android:transitionName="cover"
+            android:background="?attr/colorSurfaceContainerHigh" app:shapeAppearanceOverlay="@style/ShapeAppearance.App.Cover"
+            app:strokeColor="?attr/colorOutlineVariant" app:strokeWidth="0.5dp" />
+        <TextView android:id="@+id/badge" android:visibility="gone" android:layout_gravity="top|end" android:layout_margin="@dimen/space_1"
+            android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingHorizontal="@dimen/space_2"
+            android:paddingVertical="@dimen/space_1" android:background="@drawable/bg_badge" android:textColor="?attr/colorOnPrimary"
+            android:textAppearance="?attr/textAppearanceLabelSmall" />
+    </FrameLayout>
+    <TextView android:id="@+id/title" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_2" android:layout_marginBottom="@dimen/space_1" android:layout_marginHorizontal="@dimen/space_1"
+        android:ellipsize="end" android:maxLines="2" android:minLines="2"
+        android:textAppearance="?attr/textAppearanceTitleSmall" />
+</LinearLayout>

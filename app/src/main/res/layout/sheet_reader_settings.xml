@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Comic reader settings (spec §4.5 Reading, §5.1): independent of the app theme; every control works. -->
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="wrap_content">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical"
+        android:paddingHorizontal="@dimen/space_5" android:paddingTop="@dimen/space_2" android:paddingBottom="@dimen/space_6">
+
+        <TextView style="@style/Widget.App.SectionTitle" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="@string/reader_settings" />
+
+        <TextView style="@style/Widget.App.SheetLabel" android:text="@string/reader_mode" />
+        <com.google.android.material.button.MaterialButtonToggleGroup android:id="@+id/mode" android:layout_width="match_parent"
+            android:layout_height="wrap_content" app:singleSelection="true" app:selectionRequired="true">
+            <com.google.android.material.button.MaterialButton android:id="@+id/mode_webtoon" style="@style/Widget.App.SegmentButton"
+                android:text="@string/mode_webtoon_short" />
+            <com.google.android.material.button.MaterialButton android:id="@+id/mode_ltr" style="@style/Widget.App.SegmentButton"
+                android:text="@string/mode_ltr_short" />
+            <com.google.android.material.button.MaterialButton android:id="@+id/mode_rtl" style="@style/Widget.App.SegmentButton"
+                android:text="@string/mode_rtl_short" />
+            <com.google.android.material.button.MaterialButton android:id="@+id/mode_vertical" style="@style/Widget.App.SegmentButton"
+                android:text="@string/mode_vertical_short" />
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+        <include android:id="@+id/appearance" layout="@layout/part_reader_appearance" />
+
+        <com.google.android.material.materialswitch.MaterialSwitch android:id="@+id/auto_next" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:minHeight="48dp"
+            android:text="@string/auto_next" android:textAppearance="?attr/textAppearanceBodyLarge" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

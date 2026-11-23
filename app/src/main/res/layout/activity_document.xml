@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Document reader (PDF / EPUB). Same chrome as the comic reader: content full screen, bars on tap. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@color/reader_bg_black">
+    <androidx.recyclerview.widget.RecyclerView android:id="@+id/list" android:visibility="gone"
+        android:layout_width="match_parent" android:layout_height="match_parent" />
+    <androidx.viewpager2.widget.ViewPager2 android:id="@+id/pager" android:visibility="gone"
+        android:layout_width="match_parent" android:layout_height="match_parent" />
+    <WebView android:id="@+id/web" android:visibility="gone"
+        android:layout_width="match_parent" android:layout_height="match_parent" />
+    <com.google.android.material.progressindicator.CircularProgressIndicator android:id="@+id/loading"
+        android:indeterminate="true" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <TextView android:id="@+id/page_indicator" android:layout_gravity="bottom|center_horizontal" android:layout_marginBottom="@dimen/space_2"
+        android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingHorizontal="@dimen/space_2"
+        android:background="@color/image_scrim_mid" android:textColor="@color/on_image" android:textAppearance="?attr/textAppearanceLabelSmall" />
+    <LinearLayout android:id="@+id/top_bar" android:visibility="gone" android:layout_gravity="top"
+        android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical"
+        android:background="?attr/colorSurfaceContainer" android:fitsSystemWindows="true">
+        <com.google.android.material.appbar.MaterialToolbar android:id="@+id/toolbar"
+            android:layout_width="match_parent" android:layout_height="?attr/actionBarSize" app:menu="@menu/document" />
+    </LinearLayout>
+    <LinearLayout android:id="@+id/bottom_bar" android:visibility="gone" android:layout_gravity="bottom"
+        android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal"
+        android:gravity="center_vertical" android:padding="@dimen/space_2" android:fitsSystemWindows="true"
+        android:background="?attr/colorSurfaceContainer">
+        <com.google.android.material.button.MaterialButton android:id="@+id/prev" style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="wrap_content" android:layout_height="wrap_content" android:contentDescription="@string/previous"
+            app:icon="@drawable/ic_prev" />
+        <com.google.android.material.slider.Slider android:id="@+id/slider" android:layout_width="0dp" android:layout_weight="1"
+            android:layout_height="wrap_content" android:stepSize="1" android:valueFrom="0" android:valueTo="1" app:tickVisible="false" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/next" style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="wrap_content" android:layout_height="wrap_content" android:contentDescription="@string/next"
+            app:icon="@drawable/ic_next" />
+    </LinearLayout>
+</FrameLayout>

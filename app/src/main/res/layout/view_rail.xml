@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A titled horizontal rail of covers with an optional "Lihat semua" action (Home sections). -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical"
+    android:visibility="gone" android:layout_marginTop="@dimen/space_6">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal"
+        android:gravity="center_vertical" android:paddingStart="@dimen/space_5" android:paddingEnd="@dimen/space_2">
+        <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical">
+            <TextView android:id="@+id/title" style="@style/Widget.App.SectionTitle"
+                android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:id="@+id/subtitle" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:visibility="gone" android:textColor="?attr/colorOnSurfaceVariant" android:textAppearance="?attr/textAppearanceBodySmall" />
+        </LinearLayout>
+        <com.google.android.material.button.MaterialButton android:id="@+id/more" style="@style/Widget.Material3.Button.TextButton.Icon"
+            android:layout_width="wrap_content" android:layout_height="wrap_content" android:visibility="gone"
+            android:text="@string/see_all" app:icon="@drawable/ic_chevron" app:iconGravity="end" />
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView android:id="@+id/list" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:layout_marginTop="@dimen/space_2" android:clipToPadding="false"
+        android:paddingHorizontal="@dimen/space_4" android:orientation="horizontal" />
+</LinearLayout>

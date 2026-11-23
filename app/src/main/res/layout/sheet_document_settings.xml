@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Document reader settings: PDF layout, or EPUB text (size, spacing, margins, font), plus shared appearance. -->
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="wrap_content">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical"
+        android:paddingHorizontal="@dimen/space_5" android:paddingTop="@dimen/space_2" android:paddingBottom="@dimen/space_6">
+
+        <TextView style="@style/Widget.App.SectionTitle" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="@string/reader_settings" />
+
+        <LinearLayout android:id="@+id/pdf_section" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:visibility="gone">
+            <TextView style="@style/Widget.App.SheetLabel" android:text="@string/reader_mode" />
+            <com.google.android.material.button.MaterialButtonToggleGroup android:id="@+id/pdf_mode" android:layout_width="match_parent"
+                android:layout_height="wrap_content" app:singleSelection="true" app:selectionRequired="true">
+                <com.google.android.material.button.MaterialButton android:id="@+id/pdf_scroll" style="@style/Widget.App.SegmentButton"
+                    android:text="@string/pdf_mode_scroll" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/pdf_page" style="@style/Widget.App.SegmentButton"
+                    android:text="@string/pdf_mode_page" />
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/text_section" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:visibility="gone">
+            <TextView style="@style/Widget.App.SheetLabel" android:text="@string/font" />
+            <com.google.android.material.button.MaterialButtonToggleGroup android:id="@+id/font" android:layout_width="match_parent"
+                android:layout_height="wrap_content" app:singleSelection="true" app:selectionRequired="true">
+                <com.google.android.material.button.MaterialButton android:id="@+id/font_serif" style="@style/Widget.App.SegmentButton"
+                    android:text="@string/font_serif" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/font_sans" style="@style/Widget.App.SegmentButton"
+                    android:text="@string/font_sans" />
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+            <TextView style="@style/Widget.App.SheetLabel" android:text="@string/text_size" />
+            <com.google.android.material.slider.Slider android:id="@+id/text_size" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:valueFrom="80" android:valueTo="200" android:stepSize="10"
+                android:contentDescription="@string/text_size" app:tickVisible="false" />
+            <TextView style="@style/Widget.App.SheetLabel" android:text="@string/line_spacing" />
+            <com.google.android.material.slider.Slider android:id="@+id/line_spacing" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:valueFrom="1.2" android:valueTo="2.2" android:stepSize="0.1"
+                android:contentDescription="@string/line_spacing" app:tickVisible="false" />
+            <TextView style="@style/Widget.App.SheetLabel" android:text="@string/margins" />
+            <com.google.android.material.slider.Slider android:id="@+id/margins" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:valueFrom="0" android:valueTo="48" android:stepSize="4"
+                android:contentDescription="@string/margins" app:tickVisible="false" />
+        </LinearLayout>
+
+        <include android:id="@+id/appearance" layout="@layout/part_reader_appearance" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

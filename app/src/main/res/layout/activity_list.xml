@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:fitsSystemWindows="true" android:orientation="vertical">
+    <com.google.android.material.appbar.MaterialToolbar android:id="@+id/toolbar"
+        android:layout_width="match_parent" android:layout_height="?attr/actionBarSize" />
+    <com.google.android.material.textfield.TextInputLayout android:id="@+id/search_layout" android:visibility="gone"
+        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginHorizontal="@dimen/space_4"
+        android:layout_marginBottom="@dimen/space_2" app:startIconDrawable="@drawable/ic_search">
+        <com.google.android.material.textfield.TextInputEditText android:id="@+id/search"
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="@string/search_hint"
+            android:imeOptions="actionSearch" android:inputType="text" android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <TextView android:id="@+id/header" android:visibility="gone" android:padding="@dimen/space_4"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:textAppearance="?attr/textAppearanceTitleMedium" />
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout android:id="@+id/refresh"
+        android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
+        <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+            <androidx.recyclerview.widget.RecyclerView android:id="@+id/list" android:clipToPadding="false"
+                android:layout_width="match_parent" android:layout_height="match_parent" android:padding="@dimen/space_1" />
+            <!-- Load failure with nothing to show (Kotatsu: error state with "Open in web browser"). -->
+            <LinearLayout android:id="@+id/error" android:visibility="gone" android:layout_gravity="center"
+                android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical"
+                android:gravity="center_horizontal" android:padding="@dimen/space_8">
+                <ImageView android:layout_width="56dp" android:layout_height="56dp" android:src="@drawable/ic_off"
+                    android:importantForAccessibility="no" app:tint="?attr/colorOutline" />
+                <TextView android:id="@+id/error_title" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_4" android:gravity="center" android:text="@string/load_failed"
+                    android:textAppearance="?attr/textAppearanceTitleLarge" />
+                <TextView android:id="@+id/error_text" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_1" android:gravity="center" android:textColor="?attr/colorOnSurfaceVariant"
+                    android:textAppearance="?attr/textAppearanceBodyMedium" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/error_browser" style="@style/Widget.Material3.Button.Icon"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/space_6"
+                    android:text="@string/open_in_browser" app:icon="@drawable/ic_web" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/error_retry" style="@style/Widget.Material3.Button.TextButton"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/space_1"
+                    android:text="@string/retry" />
+            </LinearLayout>
+            <TextView android:id="@+id/empty" style="@style/Widget.App.EmptyState" android:visibility="gone" android:text="@string/empty_list" />
+        </FrameLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</LinearLayout>

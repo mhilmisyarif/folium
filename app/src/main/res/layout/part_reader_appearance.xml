@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Shared by the comic and document reader settings: page background, brightness, keep screen on. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+    <TextView style="@style/Widget.App.SheetLabel" android:text="@string/reader_background" />
+    <com.google.android.material.button.MaterialButtonToggleGroup android:id="@+id/background" android:layout_width="match_parent"
+        android:layout_height="wrap_content" app:singleSelection="true" app:selectionRequired="true">
+        <com.google.android.material.button.MaterialButton android:id="@+id/bg_black" style="@style/Widget.App.SegmentButton"
+            android:text="@string/bg_black" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/bg_gray" style="@style/Widget.App.SegmentButton"
+            android:text="@string/bg_gray" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/bg_paper" style="@style/Widget.App.SegmentButton"
+            android:text="@string/bg_paper" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/bg_white" style="@style/Widget.App.SegmentButton"
+            android:text="@string/bg_white" />
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal"
+        android:gravity="center_vertical" android:layout_marginTop="@dimen/space_4">
+        <TextView style="@style/Widget.App.SheetLabel" android:layout_width="0dp" android:layout_weight="1"
+            android:layout_marginTop="0dp" android:text="@string/brightness" />
+        <com.google.android.material.materialswitch.MaterialSwitch android:id="@+id/brightness_auto"
+            android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/brightness_auto" />
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_brightness"
+            android:importantForAccessibility="no" />
+        <com.google.android.material.slider.Slider android:id="@+id/brightness" android:layout_width="0dp" android:layout_weight="1"
+            android:layout_height="wrap_content" android:valueFrom="5" android:valueTo="100" android:stepSize="1" app:tickVisible="false"
+            android:contentDescription="@string/brightness" />
+    </LinearLayout>
+
+    <com.google.android.material.materialswitch.MaterialSwitch android:id="@+id/keep_on" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:minHeight="48dp" android:layout_marginTop="@dimen/space_2"
+        android:text="@string/keep_screen_on" android:textAppearance="?attr/textAppearanceBodyLarge" />
+</LinearLayout>

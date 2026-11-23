@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Details backdrop fades into the page background (fully opaque by 85%). -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <gradient android:angle="270" android:startColor="@color/scrim_start"
+        android:centerY="0.85" android:centerColor="?android:attr/colorBackground" android:endColor="?android:attr/colorBackground" />
+</shape>

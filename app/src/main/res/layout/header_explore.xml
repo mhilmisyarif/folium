@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Explore header (spec §4.3): search, browse by type, active sources + catalogue. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical"
+    android:paddingHorizontal="@dimen/space_4" android:paddingTop="@dimen/space_1">
+
+    <!-- Two reading spaces with their own sources, search and catalogue. -->
+    <com.google.android.material.button.MaterialButtonToggleGroup android:id="@+id/kind" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:layout_marginBottom="@dimen/space_3" app:singleSelection="true" app:selectionRequired="true">
+        <com.google.android.material.button.MaterialButton android:id="@+id/kind_comic" style="@style/Widget.App.SegmentButton"
+            android:text="@string/space_comics" app:icon="@drawable/ic_explore" app:iconGravity="textStart" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/kind_text" style="@style/Widget.App.SegmentButton"
+            android:text="@string/space_books" app:icon="@drawable/ic_empty" app:iconSize="20dp" app:iconGravity="textStart" />
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    <!-- Looks like a search field, opens search in the current space. -->
+    <LinearLayout android:id="@+id/search_all" android:layout_width="match_parent" android:layout_height="52dp"
+        android:background="@drawable/bg_search_pill" android:foreground="?attr/selectableItemBackground"
+        android:clickable="true" android:focusable="true" android:gravity="center_vertical"
+        android:orientation="horizontal" android:paddingHorizontal="@dimen/space_4"
+        android:contentDescription="@string/search_all" android:stateListAnimator="@animator/press_scale">
+        <ImageView android:layout_width="22dp" android:layout_height="22dp" android:src="@drawable/ic_search"
+            android:importantForAccessibility="no" app:tint="?attr/colorOnSurfaceVariant" />
+        <TextView android:id="@+id/search_label" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_3" android:text="@string/search_all" android:importantForAccessibility="no"
+            android:textColor="?attr/colorOnSurfaceVariant" android:textAppearance="?attr/textAppearanceBodyLarge" />
+    </LinearLayout>
+
+    <HorizontalScrollView android:layout_width="match_parent" android:layout_height="wrap_content" android:scrollbars="none"
+        android:layout_marginTop="@dimen/space_3">
+        <com.google.android.material.chip.ChipGroup android:id="@+id/types" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" app:singleLine="true" />
+    </HorizontalScrollView>
+
+    <!-- Books space: local PDF/EPUB files (spec §5). -->
+    <com.google.android.material.button.MaterialButton android:id="@+id/import_doc" style="@style/Widget.Material3.Button.TonalButton.Icon"
+        android:layout_width="match_parent" android:layout_height="52dp" android:layout_marginTop="@dimen/space_3" android:visibility="gone"
+        android:text="@string/import_document" app:icon="@drawable/ic_upload" app:shapeAppearance="@style/ShapeAppearance.App.Medium" />
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/space_6"
+        android:layout_marginBottom="@dimen/space_1" android:orientation="horizontal" android:gravity="center_vertical">
+        <TextView style="@style/Widget.App.SectionTitle" android:layout_width="0dp" android:layout_weight="1"
+            android:layout_height="wrap_content" android:text="@string/sources" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/catalog" style="@style/Widget.Material3.Button.TonalButton.Icon"
+            android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/source_catalog"
+            app:icon="@drawable/ic_add" />
+    </LinearLayout>
+</LinearLayout>

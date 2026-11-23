@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Home (Folium spec §4.1): greeting, continue reading, recently updated, recommended, categories. Real data only. -->
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:clipToPadding="false" android:paddingBottom="@dimen/space_6">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal"
+            android:gravity="center_vertical" android:paddingHorizontal="@dimen/space_5" android:paddingTop="@dimen/space_1">
+            <ImageView android:layout_width="28dp" android:layout_height="28dp" android:src="@drawable/ic_folium_logo"
+                android:importantForAccessibility="no" />
+            <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_3" android:orientation="vertical">
+                <TextView android:id="@+id/greeting" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:accessibilityHeading="true" android:textAppearance="?attr/textAppearanceTitleLarge" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/tagline"
+                    android:textColor="?attr/colorOnSurfaceVariant" android:textAppearance="?attr/textAppearanceBodySmall" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/search" android:layout_width="match_parent" android:layout_height="52dp"
+            android:layout_marginHorizontal="@dimen/space_4" android:layout_marginTop="@dimen/space_4"
+            android:background="@drawable/bg_search_pill" android:foreground="?attr/selectableItemBackground"
+            android:clickable="true" android:focusable="true" android:gravity="center_vertical"
+            android:orientation="horizontal" android:paddingHorizontal="@dimen/space_4"
+            android:contentDescription="@string/search_all" android:stateListAnimator="@animator/press_scale">
+            <ImageView android:layout_width="22dp" android:layout_height="22dp" android:src="@drawable/ic_search"
+                android:importantForAccessibility="no" app:tint="?attr/colorOnSurfaceVariant" />
+            <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_3" android:text="@string/search_all" android:importantForAccessibility="no"
+                android:textColor="?attr/colorOnSurfaceVariant" android:textAppearance="?attr/textAppearanceBodyLarge" />
+        </LinearLayout>
+
+    <!-- "Continue reading" hero: last manga read, cover art behind a dark scrim, one pill CTA. -->
+    <com.google.android.material.card.MaterialCardView android:id="@+id/hero" android:visibility="gone"
+        android:layout_width="match_parent" android:layout_height="224dp" android:layout_marginHorizontal="@dimen/space_4" android:layout_marginTop="@dimen/space_4"
+        app:cardBackgroundColor="@color/ink_black" app:shapeAppearance="@style/ShapeAppearance.App.Large"
+        android:stateListAnimator="@animator/press_scale">
+        <ImageView android:id="@+id/hero_backdrop" android:layout_width="match_parent" android:layout_height="match_parent"
+            android:scaleType="centerCrop" android:importantForAccessibility="no" />
+        <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/bg_hero_scrim" />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="horizontal"
+            android:padding="@dimen/space_4" android:gravity="bottom">
+            <com.google.android.material.imageview.ShapeableImageView android:id="@+id/hero_cover"
+                android:layout_width="96dp" android:layout_height="144dp" android:scaleType="centerCrop"
+                android:importantForAccessibility="no" android:transitionName="cover"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.App.Icon" />
+            <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_4" android:orientation="vertical">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/continue_reading_label"
+                    android:background="@drawable/bg_badge" android:paddingHorizontal="@dimen/space_3" android:paddingVertical="@dimen/space_1"
+                    android:textColor="?attr/colorOnPrimary" android:textAppearance="?attr/textAppearanceLabelSmall" />
+                <TextView android:id="@+id/hero_title" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_2" android:maxLines="2" android:ellipsize="end" android:textColor="@color/on_image"
+                    android:textAppearance="?attr/textAppearanceTitleLarge" />
+                <TextView android:id="@+id/hero_chapter" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_1" android:maxLines="1" android:ellipsize="end" android:textColor="@color/on_image_variant"
+                    android:textAppearance="?attr/textAppearanceBodySmall" />
+                <com.google.android.material.progressindicator.LinearProgressIndicator android:id="@+id/hero_progress"
+                    android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/space_3"
+                    android:max="100" app:indicatorColor="@color/sage" app:trackColor="@color/on_image_track" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/hero_resume"
+                    style="@style/Widget.Material3.Button.Icon" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_1" android:text="@string/continue_reading" app:icon="@drawable/ic_play" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+        <!-- No reading history yet (spec §8 empty state). -->
+        <LinearLayout android:id="@+id/welcome" android:visibility="gone" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_margin="@dimen/space_4" android:orientation="vertical"
+            android:padding="@dimen/space_6" android:background="@drawable/bg_tile" android:gravity="center_horizontal">
+            <ImageView android:layout_width="48dp" android:layout_height="48dp" android:src="@drawable/ic_empty"
+                android:importantForAccessibility="no" app:tint="?attr/colorPrimary" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/space_3"
+                android:gravity="center" android:text="@string/home_empty_title" android:textAppearance="?attr/textAppearanceTitleLarge" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/space_1"
+                android:gravity="center" android:text="@string/home_empty_text" android:textColor="?attr/colorOnSurfaceVariant"
+                android:textAppearance="?attr/textAppearanceBodyMedium" />
+            <com.google.android.material.button.MaterialButton android:id="@+id/welcome_explore" style="@style/Widget.Material3.Button.Icon"
+                android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/space_4"
+                android:text="@string/explore" app:icon="@drawable/ic_explore" />
+        </LinearLayout>
+
+        <include android:id="@+id/rail_continue" layout="@layout/view_rail" />
+        <include android:id="@+id/rail_updates" layout="@layout/view_rail" />
+        <include android:id="@+id/rail_recommended" layout="@layout/view_rail" />
+
+        <TextView style="@style/Widget.App.SectionTitle" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_6" android:paddingHorizontal="@dimen/space_5" android:text="@string/browse_by_type" />
+        <HorizontalScrollView android:layout_width="match_parent" android:layout_height="wrap_content" android:scrollbars="none"
+            android:clipToPadding="false" android:paddingHorizontal="@dimen/space_4" android:layout_marginTop="@dimen/space_2">
+            <com.google.android.material.chip.ChipGroup android:id="@+id/types" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" app:singleLine="true" />
+        </HorizontalScrollView>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

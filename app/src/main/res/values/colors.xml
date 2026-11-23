@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Folium — Japanese Cozy Editorial (docs/FOLIUM_PRODUCT_SPEC.md §3.1), light theme, as Material 3 roles.
+  Contrast-adjusted (docs/FOLIUM_ARCHITECTURE.md §2): text secondary #6B6158 (5.1:1 on cream; spec #756B61 is 4.4:1),
+  Sage/Sakura only as fills with dark text; derived text-capable shades for secondary/tertiary. Every pair >= 4.5:1.
+-->
+<resources>
+    <!-- Brand -->
+    <color name="forest_green">#263D32</color>
+    <color name="warm_cream">#F5EBDD</color>
+    <color name="sakura_pink">#DDA5A0</color>
+    <color name="wood_brown">#5A4636</color>
+    <color name="ink_black">#292522</color>
+    <color name="sage">#A8B5A0</color>
+    <!-- Fixed (not theme-switched) deep shades for letter tiles with a cream letter. -->
+    <color name="deep_sage">#55654F</color>
+    <color name="deep_rose">#8E4E49</color>
+
+    <!-- Primary: Forest Green -->
+    <color name="md_primary">#263D32</color>
+    <color name="md_on_primary">#FFFFFF</color>
+    <color name="md_primary_container">#DCE5D9</color>
+    <color name="md_on_primary_container">#263D32</color>
+    <!-- Secondary: Sage (fill) / deeper sage for text -->
+    <color name="md_secondary">#55654F</color>
+    <color name="md_on_secondary">#FFFFFF</color>
+    <color name="md_secondary_container">#A8B5A0</color>
+    <color name="md_on_secondary_container">#263D32</color>
+    <!-- Tertiary: Sakura accent (fill) / deeper rose for text -->
+    <color name="md_tertiary">#8E4E49</color>
+    <color name="md_on_tertiary">#FFFFFF</color>
+    <color name="md_tertiary_container">#DDA5A0</color>
+    <color name="md_on_tertiary_container">#292522</color>
+    <!-- Paper -->
+    <color name="md_background">#F5EBDD</color>
+    <color name="md_on_background">#292522</color>
+    <color name="md_surface">#F5EBDD</color>
+    <color name="md_on_surface">#292522</color>
+    <color name="md_surface_variant">#EFE4D4</color>
+    <color name="md_on_surface_variant">#6B6158</color>
+    <color name="md_surface_container_lowest">#FFFFFF</color>
+    <color name="md_surface_container_low">#FBF8F2</color>
+    <color name="md_surface_container">#FBF8F2</color>
+    <color name="md_surface_container_high">#FFFFFF</color>
+    <color name="md_surface_container_highest">#EFE4D4</color>
+    <color name="md_outline">#857A6E</color>
+    <color name="md_outline_variant">#E2D7C8</color>
+    <color name="md_error">#B3261E</color>
+    <color name="md_on_error">#FFFFFF</color>
+    <color name="md_inverse_surface">#292522</color>
+    <color name="md_inverse_on_surface">#F5EBDD</color>
+    <color name="md_inverse_primary">#A8B5A0</color>
+
+    <!-- Text drawn over cover art (always on the ink scrim, both themes). -->
+    <color name="on_image">#FFFFFF</color>
+    <color name="on_image_variant">#F5EBDD</color>
+    <color name="on_image_track">#40F5EBDD</color>
+    <color name="image_scrim_strong">#F2292522</color>
+    <color name="image_scrim_mid">#B3292522</color>
+    <color name="image_scrim_weak">#59292522</color>
+    <!-- Reader page backgrounds (independent of app theme; spec §3.1 "reader appearance"). -->
+    <color name="reader_bg_black">#000000</color>
+    <color name="reader_bg_gray">#2B2E2B</color>
+    <color name="reader_bg_white">#FFFFFF</color>
+    <!-- Details backdrop fade: transparent background colour → background. -->
+    <color name="scrim_start">#00F5EBDD</color>
+</resources>

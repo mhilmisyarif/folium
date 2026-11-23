@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:fitsSystemWindows="true">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
+        <com.google.android.material.appbar.MaterialToolbar android:id="@+id/toolbar"
+            android:layout_width="match_parent" android:layout_height="?attr/actionBarSize" app:menu="@menu/details" />
+        <com.google.android.material.progressindicator.LinearProgressIndicator android:id="@+id/loading"
+            android:indeterminate="true" android:layout_width="match_parent" android:layout_height="wrap_content" />
+        <androidx.recyclerview.widget.RecyclerView android:id="@+id/list" android:paddingBottom="88dp" android:clipToPadding="false"
+            android:layout_width="match_parent" android:layout_height="match_parent" />
+    </LinearLayout>
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton android:id="@+id/read"
+        android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/space_4" android:text="@string/read" app:icon="@drawable/ic_play" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

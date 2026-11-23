@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Details hero: blurred cover backdrop fading into the page, large 2:3 cover, bold title, pill chips. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="wrap_content">
+    <ImageView android:id="@+id/backdrop" android:layout_width="match_parent" android:layout_height="280dp"
+        android:scaleType="centerCrop" android:alpha="0.45" android:importantForAccessibility="no" />
+    <!-- Taller than the backdrop: the blur bleeds past the image bounds and must fade out fully. -->
+    <View android:layout_width="match_parent" android:layout_height="320dp" android:background="@drawable/bg_backdrop_fade" />
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical"
+        android:paddingHorizontal="@dimen/space_5" android:paddingTop="@dimen/space_3" android:paddingBottom="@dimen/space_2">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal"
+            android:gravity="bottom">
+            <com.google.android.material.imageview.ShapeableImageView android:id="@+id/cover"
+                android:layout_width="128dp" android:layout_height="192dp" android:scaleType="centerCrop" android:transitionName="cover"
+                android:background="?attr/colorSurfaceContainerHigh" app:shapeAppearanceOverlay="@style/ShapeAppearance.App.Medium"
+                app:strokeColor="?attr/colorOutlineVariant" app:strokeWidth="0.5dp" />
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                android:layout_marginStart="@dimen/space_4" android:orientation="vertical">
+                <com.google.android.material.chip.Chip android:id="@+id/source" style="@style/Widget.App.Chip.Assist"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <TextView android:id="@+id/title" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_1" android:textAppearance="?attr/textAppearanceHeadlineSmall" android:textIsSelectable="true" />
+                <TextView android:id="@+id/author" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_1" android:textColor="?attr/colorOnSurfaceVariant"
+                    android:textAppearance="?attr/textAppearanceBodyMedium" />
+                <TextView android:id="@+id/progress_text" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_1" android:textColor="?attr/colorPrimary" android:textAppearance="?attr/textAppearanceLabelMedium" />
+                <TextView android:id="@+id/tracking_text" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textColor="?attr/colorOnSurfaceVariant" android:textAppearance="?attr/textAppearanceBodySmall" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Actions: equal-width tonal icon buttons (48dp+ targets, labelled for screen readers). -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal"
+            android:layout_marginTop="@dimen/space_5">
+            <com.google.android.material.button.MaterialButton android:id="@+id/btn_favourite" style="@style/Widget.App.ActionButton"
+                android:layout_marginEnd="@dimen/space_1" android:contentDescription="@string/favourites" app:icon="@drawable/ic_favourite" />
+            <com.google.android.material.button.MaterialButton android:id="@+id/btn_tracking" style="@style/Widget.App.ActionButton"
+                android:layout_marginHorizontal="@dimen/space_1" android:contentDescription="@string/tracking" app:icon="@drawable/ic_sync" />
+            <com.google.android.material.button.MaterialButton android:id="@+id/btn_download" style="@style/Widget.App.ActionButton"
+                android:layout_marginHorizontal="@dimen/space_1" android:contentDescription="@string/download" app:icon="@drawable/ic_download" />
+            <com.google.android.material.button.MaterialButton android:id="@+id/btn_browser" style="@style/Widget.App.ActionButton"
+                android:layout_marginStart="@dimen/space_1" android:contentDescription="@string/open_browser" app:icon="@drawable/ic_web" />
+        </LinearLayout>
+
+        <!-- Reading status = "Add to Library" when none (spec §4.4). -->
+        <com.google.android.material.button.MaterialButton android:id="@+id/btn_status" style="@style/Widget.Material3.Button.OutlinedButton.Icon"
+            android:layout_width="match_parent" android:layout_height="52dp" android:layout_marginTop="@dimen/space_3"
+            android:insetTop="0dp" android:insetBottom="0dp" app:icon="@drawable/ic_library" app:iconGravity="textStart"
+            app:shapeAppearance="@style/ShapeAppearance.App.Medium" android:text="@string/add_to_library" />
+        <com.google.android.material.chip.ChipGroup android:id="@+id/tags" android:layout_marginTop="@dimen/space_4"
+            android:layout_width="match_parent" android:layout_height="wrap_content" app:chipSpacingVertical="0dp" />
+        <TextView android:id="@+id/description" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_2" android:maxLines="4" android:ellipsize="end"
+            android:background="?attr/selectableItemBackground" android:textColor="?attr/colorOnSurfaceVariant"
+            android:textAppearance="?attr/textAppearanceBodyMedium" />
+        <TextView android:id="@+id/chapters_title" style="@style/Widget.App.SectionTitle"
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/space_6" />
+    </LinearLayout>
+</FrameLayout>
