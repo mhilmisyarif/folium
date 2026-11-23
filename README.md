@@ -1,157 +1,159 @@
 <div align="center">
 
-<img src="docs/assets/logo.svg" width="112" alt="Logo Folium" />
+<img src="docs/assets/logo.svg" width="112" alt="Folium logo" />
 
 # Folium
 
 **Your Cozy Reading Space. A place for every story.**
 
-Perpustakaan digital Android untuk komik, novel online, dan buku lokal dalam satu tempat.
+An Android digital library for comics, web novels, and local books in one place.
 
 ![Android](https://img.shields.io/badge/Android-6.0%2B%20(API%2023)-263D32?logo=android&logoColor=F5EBDD)
 ![Kotlin](https://img.shields.io/badge/Kotlin-2.2-263D32?logo=kotlin&logoColor=F5EBDD)
-![Sources](https://img.shields.io/badge/sumber-1.200%2B-55654F)
-![License](https://img.shields.io/badge/lisensi-GPL--3.0-55654F)
+![Sources](https://img.shields.io/badge/sources-1%2C200%2B-55654F)
+![License](https://img.shields.io/badge/license-GPL--3.0-55654F)
 
 </div>
 
 ---
 
-Folium menggabungkan manga, manhwa, manhua, novel web, PDF, dan EPUB ke dalam satu perpustakaan. Semuanya memakai progres, riwayat, dan koleksi yang sama.
+Folium brings manga, manhwa, manhua, web novels, PDFs, and EPUBs together in one library. Every format shares the same progress, history, and collections.
 
-Mesin sumbernya memakai **[kotatsu-parsers](https://github.com/KotatsuApp/kotatsu-parsers)**, dan pengalaman membaca komiknya mengikuti **[Kotatsu](https://github.com/KotatsuApp/Kotatsu)**. Di atasnya, Folium punya desain sendiri: tenang, hangat, dan nyaman untuk sesi baca yang panjang.
+Sources are powered by **[kotatsu-parsers](https://github.com/KotatsuApp/kotatsu-parsers)**, and the comic reading experience follows **[Kotatsu](https://github.com/KotatsuApp/Kotatsu)**. On top of that, Folium has a design of its own: calm, warm, and comfortable for long reading sessions.
 
-## Tangkapan layar
+> The app's interface is currently in Indonesian.
+
+## Screenshots
 
 <table>
   <tr>
-    <td align="center"><img src="docs/assets/screenshots/01-home.webp" width="200" alt="Beranda" /><br /><sub>Beranda</sub></td>
+    <td align="center"><img src="docs/assets/screenshots/01-home.webp" width="200" alt="Home" /><br /><sub>Home</sub></td>
     <td align="center"><img src="docs/assets/screenshots/02-library.webp" width="200" alt="Library" /><br /><sub>Library</sub></td>
-    <td align="center"><img src="docs/assets/screenshots/03-explore.webp" width="200" alt="Jelajah" /><br /><sub>Jelajah</sub></td>
-    <td align="center"><img src="docs/assets/screenshots/04-details.webp" width="200" alt="Detail judul" /><br /><sub>Detail judul</sub></td>
+    <td align="center"><img src="docs/assets/screenshots/03-explore.webp" width="200" alt="Explore" /><br /><sub>Explore</sub></td>
+    <td align="center"><img src="docs/assets/screenshots/04-details.webp" width="200" alt="Title details" /><br /><sub>Title details</sub></td>
   </tr>
   <tr>
-    <td align="center"><img src="docs/assets/screenshots/05-reader.webp" width="200" alt="Pembaca komik" /><br /><sub>Pembaca komik</sub></td>
-    <td align="center"><img src="docs/assets/screenshots/09-comic-settings.webp" width="200" alt="Pengaturan pembaca komik" /><br /><sub>Pengaturan pembaca komik</sub></td>
-    <td align="center"><img src="docs/assets/screenshots/10-text-settings.webp" width="200" alt="Pengaturan pembaca novel dan buku" /><br /><sub>Pembaca novel &amp; buku</sub></td>
-    <td align="center"><img src="docs/assets/screenshots/08-sources-settings.webp" width="200" alt="Pengaturan sumber manga" /><br /><sub>Sumber manga</sub></td>
+    <td align="center"><img src="docs/assets/screenshots/05-reader.webp" width="200" alt="Comic reader" /><br /><sub>Comic reader</sub></td>
+    <td align="center"><img src="docs/assets/screenshots/09-comic-settings.webp" width="200" alt="Comic reader settings" /><br /><sub>Comic reader settings</sub></td>
+    <td align="center"><img src="docs/assets/screenshots/10-text-settings.webp" width="200" alt="Novel and book reader settings" /><br /><sub>Novel &amp; book reader</sub></td>
+    <td align="center"><img src="docs/assets/screenshots/08-sources-settings.webp" width="200" alt="Manga sources settings" /><br /><sub>Manga sources</sub></td>
   </tr>
   <tr>
-    <td align="center"><img src="docs/assets/screenshots/11-home-light.webp" width="200" alt="Beranda tema terang" /><br /><sub>Tema terang</sub></td>
-    <td align="center"><img src="docs/assets/screenshots/12-explore-light.webp" width="200" alt="Jelajah tema terang" /><br /><sub>Jelajah (terang)</sub></td>
-    <td align="center"><img src="docs/assets/screenshots/07-settings.webp" width="200" alt="Pengaturan" /><br /><sub>Pengaturan</sub></td>
+    <td align="center"><img src="docs/assets/screenshots/11-home-light.webp" width="200" alt="Home in light theme" /><br /><sub>Light theme</sub></td>
+    <td align="center"><img src="docs/assets/screenshots/12-explore-light.webp" width="200" alt="Explore in light theme" /><br /><sub>Explore (light)</sub></td>
+    <td align="center"><img src="docs/assets/screenshots/07-settings.webp" width="200" alt="Settings" /><br /><sub>Settings</sub></td>
     <td></td>
   </tr>
 </table>
 
-## Kapabilitas
+## Features
 
-### Satu perpustakaan untuk semua format
+### One library for every format
 
-| Format | Sumber | Pembaca |
+| Format | Source | Reader |
 |---|---|---|
-| Manga, manhwa, manhua, komik | 1.200+ situs lewat kotatsu-parsers, termasuk banyak sumber berbahasa Indonesia | Pembaca komik (gambar) |
-| Novel web | WebNovel (bab gratis; bab berbayar hanya pratinjau publik) | Pembaca teks |
-| EPUB | Impor file dari perangkat | Pembaca teks |
-| PDF | Impor file dari perangkat | Pembaca halaman |
+| Manga, manhwa, manhua, comics | 1,200+ sites via kotatsu-parsers, including many Indonesian sources | Comic (image) reader |
+| Web novels | WebNovel (free chapters; paid chapters show only the public preview) | Text reader |
+| EPUB | Imported from the device | Text reader |
+| PDF | Imported from the device | Page reader |
 
-### Beranda dan Library
+### Home and Library
 
-- **Beranda:** kartu "Lanjut membaca", rak riwayat, rekomendasi, dan daftar bab baru dari judul yang dipantau.
-- **Library:** favorit, riwayat, dan status baca (Sedang dibaca, Ingin dibaca, Selesai, Ditunda, Berhenti).
-  - Koleksi buatan sendiri.
-  - Filter per status dan jenis, urutan, dan pencarian di dalam Library.
-  - Progres baca tampil di setiap judul.
-- **Unduhan, bookmark, dan statistik** waktu baca per judul.
-- **Pelacak bab baru** di latar belakang dengan notifikasi untuk koleksi yang dipantau.
-- **Backup dan restore** dalam satu file JSON: favorit, koleksi, riwayat, bookmark, status, dan domain.
+- **Home:** a "Continue reading" card, a history shelf, recommendations, and new chapters from followed titles.
+- **Library:** favourites, history, and reading statuses (Reading, Want to read, Completed, On hold, Dropped).
+  - Custom collections.
+  - Filters by status and type, sorting, and search within the Library.
+  - Reading progress shown on every title.
+- **Downloads, bookmarks, and reading-time statistics** per title.
+- **Background new-chapter tracker** with notifications for followed collections.
+- **Backup and restore** in a single JSON file: favourites, collections, history, bookmarks, statuses, and domains.
 
-### Jelajah dan sumber
+### Explore and sources
 
-- **Dua ruang terpisah:** Komik serta Novel & Buku. Masing-masing punya sumber, pencarian global, dan katalognya sendiri.
-- **Katalog sumber:** filter bahasa dan tipe, favicon, dan penanda sumber rusak. Kalau sumber gagal dibuka, situsnya bisa dibuka di browser bawaan, misalnya untuk verifikasi Cloudflare.
-- **Pengaturan → Sumber manga** (mengikuti Kotatsu):
-  - urutan manual, alfabetis, atau terakhir digunakan;
-  - tampilan kisi;
-  - kelola sumber (tahan dan geser untuk mengurutkan);
-  - aktifkan semua sumber;
-  - nonaktifkan NSFW, dan mode penyamaran untuk judul NSFW;
-  - tandai genre berbahaya;
-  - pilih mirror otomatis;
-  - tangani tautan: link manga dari browser dibuka langsung di Folium.
-- **Pengaturan per sumber:** aktif/nonaktif, domain dan mirror, User-Agent, server gambar, konten mencurigakan, pemisahan terjemahan, perlambat unduhan, login ke situs, hapus cookie, buka di browser.
+- **Two separate spaces:** Comics, and Novels & Books. Each has its own sources, global search, and catalogue.
+- **Source catalogue:** language and type filters, favicons, and broken-source markers. When a source fails to load, its site can be opened in the built-in browser, for example to pass a Cloudflare check.
+- **Settings → Manga sources** (as in Kotatsu):
+  - manual, alphabetical, or last-used order;
+  - grid view;
+  - manage sources (press and drag to reorder);
+  - enable all sources;
+  - disable NSFW, and incognito mode for NSFW titles;
+  - highlight dangerous genres;
+  - automatic mirror selection;
+  - link handling: manga links from the browser open directly in Folium.
+- **Per-source settings:** enable/disable, domain and mirrors, User-Agent, image server, suspicious content, split by translation, download slowdown, sign in to the site, clear cookies, open in browser.
 
-### Pembaca komik
+### Comic reader
 
-- **Mode:** Standar (kiri ke kanan), Kanan-ke-kiri, Vertikal, dan Webtoon. Mode diingat per judul, dan webtoon bisa terdeteksi otomatis.
-- **Mode skala:** pas tengah, pas tinggi, pas lebar, atau tetap di awal.
-- **Zoom:** cubit atau ketuk dua kali, dengan geser dalam gambar yang diperbesar.
-- **Kontrol:** zona ketuk, tombol volume (bisa dibalik), tombol panah keyboard, dan kontrol ergonomis.
-- **Tampilan:** animasi halaman, layar penuh, orientasi, bilah informasi, latar belakang, kecerahan, dan layar tetap menyala.
-- **Membaca:** lanjut otomatis ke bab berikutnya, popup judul bab, halaman dimuat lebih awal (selalu atau hanya di Wi-Fi), bookmark halaman, dan baca offline dari unduhan.
+- **Modes:** Standard (left to right), Right to left, Vertical, and Webtoon. The mode is remembered per title, and webtoons can be detected automatically.
+- **Scale modes:** fit center, fit height, fit width, or keep at start.
+- **Zoom:** pinch or double-tap, with panning inside the zoomed image.
+- **Controls:** tap zones, volume keys (invertible), keyboard arrow keys, and ergonomic controls.
+- **Display:** page animation, fullscreen, orientation, info bar, background, brightness, and keep screen on.
+- **Reading:** auto-advance to the next chapter, chapter-change popup, page preloading (always or Wi-Fi only), page bookmarks, and offline reading from downloads.
 
-### Pembaca novel dan buku
+### Novel and book reader
 
-- **Teks:** font serif atau sans, ukuran teks, spasi baris, margin, latar (kertas, putih, abu, hitam), dan kecerahan. Pengaturannya terpisah dari pembaca komik.
-- **Novel web:** navigasi bab, posisi gulir diingat, dan unduhan bab untuk dibaca offline.
-- **EPUB:** daftar isi, sampul, dan posisi di dalam bab yang tersimpan.
-- **PDF:** mode gulir atau per halaman.
+- **Text:** serif or sans font, text size, line spacing, margins, background (paper, white, grey, black), and brightness. These settings are separate from the comic reader.
+- **Web novels:** chapter navigation, remembered scroll position, and chapter downloads for offline reading.
+- **EPUB:** table of contents, cover, and saved position inside a chapter.
+- **PDF:** scroll or page-by-page mode.
 
-### Lainnya
+### More
 
-- **Scrobbling:** AniList, MyAnimeList, Kitsu, dan Shikimori.
-- **Tema:** terang, gelap, atau ikut sistem, plus warna dinamis dari wallpaper (Android 12+).
-- **Desain:** Playfair Display untuk judul, Inter untuk teks, palet hijau hutan, krem, dan sage dengan kontras yang dicek, dan ikon Material Symbols.
+- **Scrobbling:** AniList, MyAnimeList, Kitsu, and Shikimori.
+- **Themes:** light, dark, or follow the system, plus dynamic wallpaper colours (Android 12+).
+- **Design:** Playfair Display for headings, Inter for text, a forest-green, cream, and sage palette with contrast-checked colours, and Material Symbols icons.
 
-## Teknologi
+## Tech stack
 
-- **Kotlin**, Android Views + ViewBinding, dan **Material 3**.
-- **Room** (dengan migrasi yang dites), **WorkManager**, **OkHttp**, **Jsoup**, dan **Coil**.
-- **kotatsu-parsers** untuk sumber manga, dengan adaptor sendiri untuk konteks jaringan, cookie WebView, dan verifikasi Cloudflare.
-- Tanpa framework DI. Dependensi dirakit di `App.kt`.
+- **Kotlin**, Android Views + ViewBinding, and **Material 3**.
+- **Room** (with tested migrations), **WorkManager**, **OkHttp**, **Jsoup**, and **Coil**.
+- **kotatsu-parsers** for manga sources, with Folium's own adapter for networking, WebView cookies, and Cloudflare checks.
+- No DI framework. Dependencies are wired up in `App.kt`.
 
 ```
 app/src/main/java/dev/mangareader/
-├── data/         Room, repository, Library, backup, penyimpanan unduhan
-├── document/     EPUB/PDF lokal
-├── parser/       adaptor kotatsu-parsers, WebView fetcher, sumber novel
+├── data/         Room, repository, Library, backup, download storage
+├── document/     local EPUB/PDF
+├── parser/       kotatsu-parsers adapter, WebView fetcher, novel source
 ├── scrobbling/   AniList, MAL, Kitsu, Shikimori
-├── ui/           activity, fragment, pembaca, pengaturan
-└── work/         unduhan dan pelacak bab baru
+├── ui/           activities, fragments, readers, settings
+└── work/         downloads and new-chapter tracker
 ```
 
-## Build
+## Building
 
-Butuh JDK 17+ dan Android SDK (compileSdk 36).
+Requires JDK 17+ and the Android SDK (compileSdk 36).
 
 ```bash
-./gradlew :app:assembleDebug      # APK di app/build/outputs/apk/debug/
-./gradlew :app:testDebugUnitTest  # unit test
+./gradlew :app:assembleDebug      # APK in app/build/outputs/apk/debug/
+./gradlew :app:testDebugUnitTest  # unit tests
 ./gradlew :app:lintDebug          # lint
 ```
 
-Tes migrasi database ada di `app/src/androidTest`. Jangan jalankan lewat `connectedAndroidTest` di perangkat yang berisi data penting, karena Gradle meng-uninstall aplikasi sesudahnya. Cara yang aman ada di [`docs/FOLIUM_IMPLEMENTATION_PLAN.md`](docs/FOLIUM_IMPLEMENTATION_PLAN.md), bagian Fase 6.
+The database migration test lives in `app/src/androidTest`. Don't run it with `connectedAndroidTest` on a device that holds data you care about: Gradle uninstalls the app afterwards. The safe way to run it is described in [`docs/FOLIUM_IMPLEMENTATION_PLAN.md`](docs/FOLIUM_IMPLEMENTATION_PLAN.md), under Phase 6.
 
-Dokumentasi produk, arsitektur, dan rencana implementasi ada di [`docs/`](docs/).
+Product, architecture, and implementation-plan documents (in Indonesian) are in [`docs/`](docs/).
 
-## Kredit
+## Credits
 
-Folium berdiri di atas karya **[Kotatsu](https://github.com/KotatsuApp/Kotatsu)** oleh Koitharu dan para kontributornya (GPL-3.0):
+Folium is built on the work of **[Kotatsu](https://github.com/KotatsuApp/Kotatsu)** by Koitharu and its contributors (GPL-3.0):
 
-- Semua sumber manga memakai **[kotatsu-parsers](https://github.com/KotatsuApp/kotatsu-parsers)** (GPL-3.0) lewat JitPack.
-- Pengaturan pembaca, pengaturan sumber, katalog sumber, dan pemilihan mirror mengikuti Kotatsu, dengan kunci pengaturan dan label yang sama. Sebagian logikanya diadaptasi dari kode Kotatsu.
+- All manga sources come from **[kotatsu-parsers](https://github.com/KotatsuApp/kotatsu-parsers)** (GPL-3.0), via JitPack.
+- Reader settings, source settings, the source catalogue, and mirror selection follow Kotatsu, using the same setting keys and labels. Some of the logic is adapted from Kotatsu's code.
 
-Folium bukan proyek resmi Kotatsu dan tidak berafiliasi dengannya.
+Folium is not an official Kotatsu project and is not affiliated with it.
 
-Aset pihak ketiga:
+Third-party assets:
 
-- Font [Playfair Display](https://github.com/clauseggers/Playfair) dan [Inter](https://github.com/rsms/inter), keduanya SIL Open Font License 1.1. Teks lisensinya ada di `app/src/main/assets/`.
-- Ikon [Material Symbols](https://github.com/google/material-design-icons) (Apache-2.0).
+- [Playfair Display](https://github.com/clauseggers/Playfair) and [Inter](https://github.com/rsms/inter) fonts, both under the SIL Open Font License 1.1. Their license texts are in `app/src/main/assets/`.
+- [Material Symbols](https://github.com/google/material-design-icons) icons (Apache-2.0).
 
-## Penafian
+## Disclaimer
 
-Folium tidak meng-host, mengunggah, atau mendistribusikan konten apa pun. Semua manga dan novel dimuat langsung dari situs sumbernya, dan hak cipta tetap milik pemiliknya masing-masing. Gambar sampul dan halaman di tangkapan layar hanya untuk menunjukkan antarmuka.
+Folium does not host, upload, or distribute any content. All manga and novels are loaded directly from their source sites, and copyright remains with the respective owners. Covers and pages in the screenshots are shown only to demonstrate the interface.
 
-## Lisensi
+## License
 
-[GNU General Public License v3.0](LICENSE), mengikuti lisensi Kotatsu dan kotatsu-parsers.
+[GNU General Public License v3.0](LICENSE), following the license of Kotatsu and kotatsu-parsers.
